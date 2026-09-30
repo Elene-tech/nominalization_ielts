@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nominalization Practice — IELTS Writing</title>
+<style>
+:root{
+  --forest:#1A3A2D; --forest2:#0F231B; --cream:#F6F4ED; --paper:#FFFFFF;
+  --lime:#A3E635; --limedeep:#65A30D; --yellow:#FACC15; --amber:#EAB308;
+  --clay:#B84C2A; --ink:#22312A; --muted:#6B7A72; --line:#DDD8CB;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--cream);color:var(--ink);min-height:100vh}
+.wrap{max-width:980px;margin:0 auto;padding:28px 18px 80px}
+
+/* ===== HEADER ===== */
+header{background:var(--forest);border-radius:20px;padding:30px 32px;color:#fff;position:relative;overflow:hidden;margin-bottom:22px}
+header::after{content:'';position:absolute;right:-70px;top:-70px;width:240px;height:240px;background:var(--lime);opacity:.16;border-radius:50%}
+header::before{content:'';position:absolute;right:60px;bottom:-90px;width:180px;height:180px;background:var(--yellow);opacity:.14;border-radius:50%}
+.kicker{color:var(--yellow);font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px}
+header h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(24px,4vw,36px);line-height:1.15;position:relative;z-index:1}
+header p{color:#C8D6CE;margin-top:8px;font-size:15px;position:relative;z-index:1}
+.progress-line{margin-top:16px;display:flex;align-items:center;gap:12px;position:relative;z-index:1}
+.progress-track{flex:1;height:10px;background:#2A5040;border-radius:99px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--lime),var(--yellow));border-radius:99px;width:0%;transition:width .4s}
+.progress-label{font-size:13px;font-weight:700;color:var(--lime);white-space:nowrap}
+
+/* ===== TABS ===== */
+.tabs{display:flex;gap:10px;margin-bottom:22px}
+.tab{flex:1;padding:14px 18px;border-radius:14px;border:2px solid var(--line);background:var(--paper);font-size:15px;font-weight:700;cursor:pointer;color:var(--muted);transition:.2s;text-align:center}
+.tab small{display:block;font-weight:400;font-size:12px;margin-top:2px}
+.tab.active{background:var(--forest);border-color:var(--forest);color:#fff}
+.tab.active small{color:var(--lime)}
+.tab:hover:not(.active){border-color:var(--limedeep);color:var(--forest)}
+
+/* ===== CARDS ===== */
+.card{background:var(--paper);border-radius:16px;padding:24px;margin-bottom:18px;border:1px solid var(--line);box-shadow:0 2px 8px rgba(26,58,45,.05)}
+.card.done{border-left:6px solid var(--lime)}
+.card-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:14px}
+.num{min-width:36px;height:36px;border-radius:10px;background:var(--forest);color:var(--yellow);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
+.card.done .num{background:var(--lime);color:var(--forest)}
+.src-label{font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--clay);text-transform:uppercase;margin-bottom:4px}
+.src{font-size:17px;font-weight:600;line-height:1.5}
+.hint{display:inline-block;margin-top:6px;font-size:13px;background:#FEF9C3;border:1px dashed var(--amber);border-radius:8px;padding:5px 10px;color:#713F12}
+textarea{width:100%;min-height:76px;border:2px solid var(--line);border-radius:12px;padding:12px 14px;font-size:16px;font-family:inherit;resize:vertical;background:#FDFDFB;transition:border .2s}
+textarea:focus{outline:none;border-color:var(--limedeep)}
+.btn-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+.btn{padding:10px 18px;border-radius:10px;border:none;font-size:14px;font-weight:700;cursor:pointer;transition:.2s}
+.btn-model{background:var(--yellow);color:var(--forest)}
+.btn-model:hover{background:var(--amber)}
+.btn-done{background:var(--paper);border:2px solid var(--limedeep);color:var(--limedeep)}
+.btn-done.on{background:var(--lime);border-color:var(--lime);color:var(--forest)}
+.model{display:none;margin-top:16px;background:var(--forest);color:#fff;border-radius:14px;padding:20px;position:relative}
+.model.show{display:block;animation:fadeIn .3s}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.model-label{color:var(--lime);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
+.model-text{font-size:16.5px;line-height:1.65;font-weight:600}
+.model-text b{color:var(--yellow);background:rgba(250,204,21,.12);padding:1px 5px;border-radius:5px}
+.model-note{margin-top:10px;font-size:13.5px;color:#B9CCC2;line-height:1.5;border-top:1px solid #2A5040;padding-top:10px}
+.model-note b{color:var(--lime);background:none;padding:0}
+.selfcheck{margin-top:14px;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:12px;padding:14px 16px;display:none}
+.selfcheck.show{display:block}
+.selfcheck-title{font-size:12px;font-weight:700;color:var(--limedeep);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+.selfcheck label{display:flex;gap:8px;align-items:flex-start;font-size:14px;margin:6px 0;cursor:pointer;line-height:1.45}
+.selfcheck input{margin-top:3px;accent-color:var(--limedeep)}
+
+/* ===== INTRO / FOOTER ===== */
+.intro{background:var(--paper);border-radius:16px;padding:22px 24px;margin-bottom:22px;border:1px solid var(--line)}
+.intro h2{font-family:Georgia,serif;font-size:20px;margin-bottom:10px;color:var(--forest)}
+.intro p{font-size:14.5px;line-height:1.6;color:#4A5A52}
+.intro .steps{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.intro .step{flex:1;min-width:200px;background:var(--cream);border-radius:12px;padding:12px 14px;font-size:13.5px;line-height:1.5}
+.intro .step b{display:block;color:var(--forest);margin-bottom:3px}
+.intro .step span{color:var(--limedeep);font-weight:700}
+.reset{background:none;border:none;color:var(--muted);font-size:13px;cursor:pointer;text-decoration:underline;display:block;margin:20px auto 0}
+@media(max-width:600px){.tabs{flex-direction:column}.card-head{flex-direction:column;gap:8px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">IELTS Writing · Grammar for Essays</div>
+  <h1>Nominalization: практика перефразування</h1>
+  <p>Перетворюй прості речення на академічні (Band 7.5) за допомогою номіналізації. Пиши свій варіант, потім порівнюй зі зразком.</p>
+  <div class="progress-line">
+    <div class="progress-track"><div class="progress-fill" id="pfill"></div></div>
+    <div class="progress-label" id="plabel">0 / 16</div>
+  </div>
+</header>
+
+<div class="intro">
+  <h2>Як працювати</h2>
+  <p>Номіналізація — це коли дієслово чи прикметник стає іменником: <b>rise → a rise</b>, <b>develop → development</b>. Це головний сигнал академічного стилю для IELTS Writing.</p>
+  <div class="steps">
+    <div class="step"><b>1 · Прочитай</b>Просте речення (Band 5–6) і підказку — яке слово перетворити.</div>
+    <div class="step"><b>2 · Напиши</b>Свій варіант у полі. Не бійся помилок — тут немає автоперевірки.</div>
+    <div class="step"><b>3 · Порівняй</b>Відкрий зразок Band 7.5 і знайди відмінності. <span>Жовтим</span> виділено номіналізації.</div>
+    <div class="step"><b>4 · Відміть</b>Пройди самоперевірку за чек-листом і познач картку виконаною.</div>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" data-tab="t1">Writing Task 1<small>опис графіків і трендів</small></button>
+  <button class="tab" data-tab="t2">Writing Task 2<small>есей: аргументи й причини</small></button>
+</div>
+
+<div id="board"></div>
+
+<button class="reset" id="reset">Скинути прогрес</button>
+</div>
+
+<script>
+const DATA = {
+t1: [
+{s:"Prices rose sharply in 2010.",
+ hint:"rise → a rise",
+ model:"There was a <b>sharp rise</b> in prices in 2010.",
+ alt:"2010 saw a sharp rise in prices.",
+ note:"Шаблон <b>There was a + прикметник + іменник + in</b> — найнадійніший для опису трендів у Task 1."},
+{s:"The number of tourists increased steadily between 2000 and 2010.",
+ hint:"increase → an increase",
+ model:"There was a <b>steady increase</b> in the number of tourists between 2000 and 2010.",
+ alt:"The number of tourists experienced a steady increase between 2000 and 2010.",
+ note:"Зверни увагу на артикль: <b>an increase</b>, бо steady increase починається з приголосного — a steady increase, але an increase окремо."},
+{s:"Water consumption fell dramatically after 2015.",
+ hint:"fall → a fall",
+ model:"There was a <b>dramatic fall</b> in water consumption after 2015.",
+ alt:"After 2015, water consumption saw a dramatic fall.",
+ note:"Fall і decrease взаємозамінні: <b>a dramatic fall / a dramatic decrease</b>. Обидва — Band 7+."},
+{s:"The figure fluctuated slightly throughout the period.",
+ hint:"fluctuate → fluctuations",
+ model:"The figure showed <b>slight fluctuations</b> throughout the period.",
+ alt:"There were slight fluctuations in the figure throughout the period.",
+ note:"Fluctuation зазвичай вживається у множині: <b>fluctuations</b>. Вітальне дієслово — <b>show / experience</b>."},
+{s:"Car ownership grew rapidly, so the roads became more congested.",
+ hint:"grow → growth, congested → congestion",
+ model:"The <b>rapid growth</b> in car ownership led to increased <b>road congestion</b>.",
+ alt:"The rapid growth in car ownership resulted in greater road congestion.",
+ note:"Тут номіналізація з'єднує два речення в одне через <b>led to / resulted in</b> — це виглядає набагато академічніше, ніж so."},
+{s:"The factory reduced emissions, so air quality improved.",
+ hint:"reduce → a reduction, improve → an improvement",
+ model:"The <b>reduction</b> in emissions from the factory resulted in an <b>improvement</b> in air quality.",
+ alt:"The factory's reduction in emissions led to an improvement in air quality.",
+ note:"Подвійна номіналізація допустима, коли два процеси пов'язані причинно: <b>reduction → improvement</b>."},
+{s:"Unemployment peaked in 2009 and then declined gradually.",
+ hint:"peak → a peak, decline → a decline",
+ model:"Unemployment reached <b>a peak</b> in 2009, followed by <b>a gradual decline</b>.",
+ alt:"Unemployment reached a peak in 2009 and then experienced a gradual decline.",
+ note:"Конструкція <b>reached a peak, followed by…</b> — класика Task 1 для опису вершини графіка."},
+{s:"Online sales grew, while in-store sales declined over the decade.",
+ hint:"grow → growth, decline → a decline",
+ model:"There was <b>growth</b> in online sales, accompanied by <b>a decline</b> in in-store sales over the decade.",
+ alt:"The decade saw growth in online sales alongside a decline in in-store sales.",
+ note:"<b>Accompanied by</b> — елегантний спосіб показати два паралельні тренди в одному реченні."}
+],
+t2: [
+{s:"When people work from home, they save time on commuting.",
+ hint:"work → working / remote work, save → savings",
+ model:"<b>Remote work</b> leads to significant <b>savings</b> in commuting time.",
+ alt:"Working from home results in considerable savings in commuting time.",
+ note:"Замість кліше when…, підметом стає сам процес: <b>Remote work leads to…</b>."},
+{s:"If children use smartphones too early, their attention gets worse.",
+ hint:"use → use, worse → deterioration",
+ model:"Early smartphone <b>use</b> can lead to <b>a deterioration</b> in children's attention spans.",
+ alt:"The early use of smartphones may result in a deterioration of children's attention.",
+ note:"Gets worse — розмовне. Академічний відповідник: <b>a deterioration in</b>."},
+{s:"Governments invest in public transport, so congestion is reduced.",
+ hint:"invest → investment, reduced → a reduction",
+ model:"Government <b>investment</b> in public transport results in <b>a reduction</b> in congestion.",
+ alt:"Investment in public transport by governments leads to a reduction in congestion.",
+ note:"Зв'язка <b>investment in X → reduction in Y</b> — готова формула для есеїв про транспорт і інфраструктуру."},
+{s:"People live longer now, so healthcare systems are under pressure.",
+ hint:"live longer → increase in life expectancy",
+ model:"The <b>increase</b> in life expectancy has placed healthcare systems under considerable pressure.",
+ alt:"Rising life expectancy has put considerable pressure on healthcare systems.",
+ note:"Live longer → <b>increase in life expectancy</b>. Це типовий приклад, де номіналізація вимагає перефразувати цілу фразу, а не одне слово."},
+{s:"Many young people cannot afford housing because prices have risen quickly.",
+ hint:"risen → rise",
+ model:"The <b>rapid rise</b> in housing prices has made home ownership unaffordable for many young people.",
+ alt:"Due to the rapid rise in housing prices, home ownership has become unaffordable for many young people.",
+ note:"Причину (because…) можна вбудувати в підмет: <b>The rapid rise… has made…</b>."},
+{s:"Technology develops very quickly, so workers must constantly update their skills.",
+ hint:"develops → development",
+ model:"The <b>rapid development</b> of technology has created a constant need for workers to update their skills.",
+ alt:"Rapid technological development requires workers to constantly update their skills.",
+ note:"<b>Has created a need for…</b> — сильна конструкція для есеїв про технології та освіту."},
+{s:"Schools should teach financial skills because this reduces debt problems in adulthood.",
+ hint:"teach → teaching, reduces → a reduction",
+ model:"The <b>teaching</b> of financial skills at school leads to <b>a reduction</b> in debt problems in adulthood.",
+ alt:"Teaching financial skills at school results in a reduction in debt problems later in life.",
+ note:"The teaching of… — формальніший варіант герундія. Обидва прийнятні: <b>Teaching X / The teaching of X</b>."},
+{s:"Cities become overcrowded, and this harms residents' quality of life.",
+ hint:"overcrowded → overcrowding, harms → a decline / impact",
+ model:"<b>Overcrowding</b> in cities leads to <b>a decline</b> in residents' quality of life.",
+ alt:"The overcrowding of cities has a negative impact on residents' quality of life.",
+ note:"Прикметник overcrowded → іменник <b>overcrowding</b>. Harms → <b>leads to a decline in / has a negative impact on</b>."}
+]
+};
+
+const KEY = 'nom-practice-v1';
+let state = JSON.parse(localStorage.getItem(KEY) || '{"done":{},"tab":"t1"}');
+let tab = state.tab || 't1';
+
+const board = document.getElementById('board');
+
+function save(){ localStorage.setItem(KEY, JSON.stringify(state)); }
+
+function render(){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active', t.dataset.tab===tab));
+  board.innerHTML = '';
+  DATA[tab].forEach((ex,i)=>{
+    const id = tab+'-'+i;
+    const done = !!state.done[id];
+    const card = document.createElement('div');
+    card.className = 'card'+(done?' done':'');
+    card.innerHTML = `
+      <div class="card-head">
+        <div class="num">${i+1}</div>
+        <div>
+          <div class="src-label">Просте речення · Band 5–6</div>
+          <div class="src">${ex.s}</div>
+          <div class="hint">💡 Підказка: ${ex.hint}</div>
+        </div>
+      </div>
+      <textarea placeholder="Напиши тут свій варіант з номіналізацією…" id="ta-${id}">${state['text-'+id]||''}</textarea>
+      <div class="btn-row">
+        <button class="btn btn-model" onclick="toggleModel('${id}')">Показати зразок Band 7.5</button>
+        <button class="btn btn-done ${done?'on':''}" onclick="toggleDone('${id}',this)">${done?'✓ Виконано':'Позначити виконаним'}</button>
+      </div>
+      <div class="model" id="m-${id}">
+        <div class="model-label">Зразкова відповідь · Band 7.5</div>
+        <div class="model-text">${ex.model}</div>
+        <div class="model-text" style="margin-top:8px;font-weight:500;color:#D8E6DE">Або: ${ex.alt}</div>
+        <div class="model-note">${ex.note}</div>
+      </div>
+      <div class="selfcheck" id="sc-${id}">
+        <div class="selfcheck-title">Самоперевірка</div>
+        <label><input type="checkbox"> Я замінив(-ла) дієслово/прикметник на іменник (rise → a rise)</label>
+        <label><input type="checkbox"> Перед іменником є артикль і прикметник: <i>a rapid growth</i>, не <i>rapid growth</i> без a</label>
+        <label><input type="checkbox"> Прийменник правильний: <i>rise IN</i>, <i>reduction IN</i>, <i>development OF</i></label>
+        <label><input type="checkbox"> У реченні максимум 1–2 номіналізації — воно читається природно</label>
+      </div>`;
+    board.appendChild(card);
+  });
+  updateProgress();
+}
+
+window.toggleModel = id => {
+  const m = document.getElementById('m-'+id), sc = document.getElementById('sc-'+id);
+  const show = !m.classList.contains('show');
+  m.classList.toggle('show', show); sc.classList.toggle('show', show);
+  event.target.textContent = show ? 'Сховати зразок' : 'Показати зразок Band 7.5';
+};
+
+window.toggleDone = (id, btn) => {
+  state.done[id] = !state.done[id];
+  btn.classList.toggle('on', state.done[id]);
+  btn.textContent = state.done[id] ? '✓ Виконано' : 'Позначити виконаним';
+  btn.closest('.card').classList.toggle('done', state.done[id]);
+  save(); updateProgress();
+};
+
+function updateProgress(){
+  const total = DATA.t1.length + DATA.t2.length;
+  const n = Object.values(state.done).filter(Boolean).length;
+  document.getElementById('pfill').style.width = (n/total*100)+'%';
+  document.getElementById('plabel').textContent = n+' / '+total;
+}
+
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+  tab = t.dataset.tab; state.tab = tab; save(); render();
+}));
+
+board.addEventListener('input', e=>{
+  if(e.target.tagName==='TEXTAREA'){ state['text-'+e.target.id.slice(3)] = e.target.value; save(); }
+});
+
+document.getElementById('reset').addEventListener('click',()=>{
+  if(confirm('Скинути весь прогрес і всі тексти?')){ state={done:{},tab:tab}; save(); render(); }
+});
+
+render();
+</script>
+</body>
+</html>
