@@ -3,1356 +3,285 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Grammar Lab — Граматика для IELTS Writing</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Nominalization Practice — IELTS Writing</title>
 <style>
 :root{
-  --bg:#f6faec;
-  --surface:#ffffff;
-  --surface-2:#fef9c3;
-  --surface-3:#ecfccb;
-  --text:#14301c;
-  --muted:#5c6b58;
-  --accent:#16a34a;
-  --accent-dark:#14532d;
-  --lime:#a3e635;
-  --lime-deep:#65a30d;
-  --yellow:#facc15;
-  --yellow-deep:#eab308;
-  --accent-soft:rgba(163,230,53,.28);
-  --line:#cfe3b8;
-  --ok:#15803d;
-  --ok-bg:#dcfce7;
-  --ok-line:#86efac;
-  --bad:#dc2626;
-  --bad-bg:#fee2e2;
-  --bad-line:#fca5a5;
-  --serif:"PT Serif",Georgia,"Times New Roman",serif;
-  --sans:"Inter",-apple-system,"Segoe UI",Roboto,"Noto Sans",sans-serif;
+  --forest:#1A3A2D; --forest2:#0F231B; --cream:#F6F4ED; --paper:#FFFFFF;
+  --lime:#A3E635; --limedeep:#65A30D; --yellow:#FACC15; --amber:#EAB308;
+  --clay:#B84C2A; --ink:#22312A; --muted:#6B7A72; --line:#DDD8CB;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:var(--sans);
-  font-size:16px;
-  line-height:1.65;
-  -webkit-font-smoothing:antialiased;
-}
-::selection{background:var(--yellow);color:var(--accent-dark)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--cream);color:var(--ink);min-height:100vh}
+.wrap{max-width:980px;margin:0 auto;padding:28px 18px 80px}
 
-/* ---------- Layout ---------- */
-.layout{display:flex;min-height:100vh}
-.sidebar{
-  width:272px;flex:0 0 272px;
-  position:sticky;top:0;height:100vh;overflow-y:auto;
-  border-right:1px solid var(--line);
-  padding:32px 24px 40px;
-  background:linear-gradient(180deg,#ecfccb 0%,var(--bg) 220px);
-}
-.main{flex:1;min-width:0;padding:0 56px 110px}
-.content{max-width:780px;margin:0 auto}
+/* ===== HEADER ===== */
+header{background:var(--forest);border-radius:20px;padding:30px 32px;color:#fff;position:relative;overflow:hidden;margin-bottom:22px}
+header::after{content:'';position:absolute;right:-70px;top:-70px;width:240px;height:240px;background:var(--lime);opacity:.16;border-radius:50%}
+header::before{content:'';position:absolute;right:60px;bottom:-90px;width:180px;height:180px;background:var(--yellow);opacity:.14;border-radius:50%}
+.kicker{color:var(--yellow);font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px}
+header h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(24px,4vw,36px);line-height:1.15;position:relative;z-index:1}
+header p{color:#C8D6CE;margin-top:8px;font-size:15px;position:relative;z-index:1}
+.progress-line{margin-top:16px;display:flex;align-items:center;gap:12px;position:relative;z-index:1}
+.progress-track{flex:1;height:10px;background:#2A5040;border-radius:99px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--lime),var(--yellow));border-radius:99px;width:0%;transition:width .4s}
+.progress-label{font-size:13px;font-weight:700;color:var(--lime);white-space:nowrap}
 
-/* ---------- Sidebar ---------- */
-.brand{font-family:var(--serif);font-size:26px;font-weight:700;line-height:1.15;display:block;text-decoration:none;color:var(--accent-dark)}
-.brand span{color:var(--lime-deep)}
-.brand-sub{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:6px;font-weight:600}
-.nav-label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--lime-deep);margin:30px 0 8px;font-weight:700}
-.nav a{
-  display:flex;align-items:baseline;gap:9px;
-  padding:7px 10px;margin:1px -10px;
-  border-radius:9px;text-decoration:none;color:var(--text);
-  font-size:14.5px;line-height:1.35;
-  transition:background .18s ease;
-}
-.nav a:hover{background:var(--accent-soft)}
-.nav a.active{background:var(--accent-dark);color:#fefce8}
-.nav a .num{font-family:var(--serif);font-size:12.5px;color:var(--lime-deep);min-width:20px;font-weight:700}
-.nav a.active .num{color:var(--yellow)}
-.nav a .dot{margin-left:auto;font-size:11px;color:var(--accent);opacity:0}
-.nav a .dot.on{opacity:1}
-.nav a.active .dot{color:var(--lime)}
-.side-progress{margin-top:34px;padding-top:22px;border-top:1px solid var(--line)}
-.side-progress .label{font-size:12.5px;color:var(--muted);display:flex;justify-content:space-between;margin-bottom:8px;font-weight:600}
-.reset-btn{
-  margin-top:16px;background:none;border:none;cursor:pointer;
-  font-family:var(--sans);font-size:12.5px;color:var(--muted);
-  text-decoration:underline;text-underline-offset:3px;padding:0;
-}
-.reset-btn:hover{color:var(--bad)}
+/* ===== TABS ===== */
+.tabs{display:flex;gap:10px;margin-bottom:22px}
+.tab{flex:1;padding:14px 18px;border-radius:14px;border:2px solid var(--line);background:var(--paper);font-size:15px;font-weight:700;cursor:pointer;color:var(--muted);transition:.2s;text-align:center}
+.tab small{display:block;font-weight:400;font-size:12px;margin-top:2px}
+.tab.active{background:var(--forest);border-color:var(--forest);color:#fff}
+.tab.active small{color:var(--lime)}
+.tab:hover:not(.active){border-color:var(--limedeep);color:var(--forest)}
 
-/* ---------- Progress bars ---------- */
-.pbar{height:8px;background:#e4f2cf;border-radius:99px;overflow:hidden;border:1px solid var(--line)}
-.pbar>i{display:block;height:100%;background:linear-gradient(90deg,var(--lime),var(--accent));border-radius:99px;width:0;transition:width .5s cubic-bezier(.19,1,.22,1)}
+/* ===== CARDS ===== */
+.card{background:var(--paper);border-radius:16px;padding:24px;margin-bottom:18px;border:1px solid var(--line);box-shadow:0 2px 8px rgba(26,58,45,.05)}
+.card.done{border-left:6px solid var(--lime)}
+.card-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:14px}
+.num{min-width:36px;height:36px;border-radius:10px;background:var(--forest);color:var(--yellow);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
+.card.done .num{background:var(--lime);color:var(--forest)}
+.src-label{font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--clay);text-transform:uppercase;margin-bottom:4px}
+.src{font-size:17px;font-weight:600;line-height:1.5}
+.hint{display:inline-block;margin-top:6px;font-size:13px;background:#FEF9C3;border:1px dashed var(--amber);border-radius:8px;padding:5px 10px;color:#713F12}
+textarea{width:100%;min-height:76px;border:2px solid var(--line);border-radius:12px;padding:12px 14px;font-size:16px;font-family:inherit;resize:vertical;background:#FDFDFB;transition:border .2s}
+textarea:focus{outline:none;border-color:var(--limedeep)}
+.btn-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+.btn{padding:10px 18px;border-radius:10px;border:none;font-size:14px;font-weight:700;cursor:pointer;transition:.2s}
+.btn-model{background:var(--yellow);color:var(--forest)}
+.btn-model:hover{background:var(--amber)}
+.btn-done{background:var(--paper);border:2px solid var(--limedeep);color:var(--limedeep)}
+.btn-done.on{background:var(--lime);border-color:var(--lime);color:var(--forest)}
+.model{display:none;margin-top:16px;background:var(--forest);color:#fff;border-radius:14px;padding:20px;position:relative}
+.model.show{display:block;animation:fadeIn .3s}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.model-label{color:var(--lime);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
+.model-text{font-size:16.5px;line-height:1.65;font-weight:600}
+.model-text b{color:var(--yellow);background:rgba(250,204,21,.12);padding:1px 5px;border-radius:5px}
+.model-note{margin-top:10px;font-size:13.5px;color:#B9CCC2;line-height:1.5;border-top:1px solid #2A5040;padding-top:10px}
+.model-note b{color:var(--lime);background:none;padding:0}
+.selfcheck{margin-top:14px;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:12px;padding:14px 16px;display:none}
+.selfcheck.show{display:block}
+.selfcheck-title{font-size:12px;font-weight:700;color:var(--limedeep);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+.selfcheck label{display:flex;gap:8px;align-items:flex-start;font-size:14px;margin:6px 0;cursor:pointer;line-height:1.45}
+.selfcheck input{margin-top:3px;accent-color:var(--limedeep)}
 
-/* ---------- Hero / home ---------- */
-.kicker{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--lime-deep);font-weight:800}
-.hero{padding:74px 0 46px;border-bottom:2px solid var(--line);margin-bottom:44px}
-.hero h1{
-  font-family:var(--serif);font-weight:700;
-  font-size:clamp(40px,5.6vw,60px);line-height:1.08;
-  margin:14px 0 20px;letter-spacing:-.01em;color:var(--accent-dark);
-}
-.hero h1 em{font-style:italic;color:var(--accent);background:linear-gradient(transparent 62%,var(--yellow) 62%);padding:0 4px}
-.hero p.lead{font-size:17.5px;color:var(--muted);max-width:620px}
-.hero-stats{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.stat{border:2px solid var(--line);border-radius:99px;padding:7px 16px;font-size:13.5px;background:var(--surface);font-weight:600}
-.stat b{font-family:var(--serif);color:var(--accent);margin-right:5px;font-size:16px}
-.overall{margin-top:34px;max-width:460px}
-.overall .label{font-size:13px;color:var(--muted);display:flex;justify-content:space-between;margin-bottom:8px;font-weight:600}
-
-.cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.card{
-  display:block;text-decoration:none;color:var(--text);
-  background:var(--surface);border:2px solid var(--line);border-radius:16px;
-  padding:22px 22px 18px;position:relative;
-  transition:transform .25s cubic-bezier(.19,1,.22,1),border-color .25s,box-shadow .25s;
-}
-.card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 10px 28px rgba(20,83,45,.13)}
-.card .num{font-family:var(--serif);font-size:13px;color:var(--lime-deep);font-weight:700}
-.card h3{font-family:var(--serif);font-size:20px;font-weight:700;margin:6px 0 2px;line-height:1.25;color:var(--accent-dark)}
-.card .ru{font-size:13.5px;color:var(--muted)}
-.card .tags{display:flex;gap:6px;margin:12px 0 12px;flex-wrap:wrap}
-.tag{
-  font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;
-  border:1.5px solid var(--line);border-radius:99px;padding:2px 9px;color:var(--muted);
-}
-.tag.t1{color:var(--accent-dark);border-color:var(--accent);background:var(--ok-bg)}
-.tag.t2{color:#854d0e;border-color:var(--yellow-deep);background:var(--surface-2)}
-.card .pbar{margin-top:4px}
-.card .pct{font-size:11.5px;color:var(--muted);margin-top:6px;display:block;font-weight:600}
-.card.exam{background:var(--accent-dark);color:#fefce8;border-color:var(--accent-dark)}
-.card.exam h3{color:var(--yellow)}
-.card.exam .ru{color:var(--lime)}
-.card.exam .num{color:var(--lime)}
-.card.exam .tag{border-color:rgba(250,204,21,.5);color:var(--yellow);background:transparent}
-.card.exam .pbar{background:rgba(254,252,232,.18);border-color:transparent}
-
-/* ---------- Module page ---------- */
-.mod-head{padding:60px 0 32px;border-bottom:2px solid var(--line);margin-bottom:40px}
-.mod-head h1{font-family:var(--serif);font-size:clamp(32px,4.4vw,44px);font-weight:700;line-height:1.12;margin:12px 0 6px;color:var(--accent-dark)}
-.mod-head .ru{font-size:17px;color:var(--lime-deep);font-family:var(--serif);font-style:italic;font-weight:700}
-.mod-meta{display:flex;align-items:center;gap:10px;margin-top:18px;flex-wrap:wrap}
-.mod-progress{display:flex;align-items:center;gap:12px;margin-top:22px;max-width:420px}
-.mod-progress .pbar{flex:1}
-.mod-progress .pct{font-size:13px;color:var(--muted);white-space:nowrap;font-weight:600}
-.level{display:inline-flex;gap:3px;align-items:center}
-.level i{width:8px;height:8px;border-radius:99px;background:#e4f2cf;border:1.5px solid var(--line)}
-.level i.on{background:var(--yellow);border-color:var(--yellow-deep)}
-
-section.block{margin-bottom:52px}
-h2.sec{
-  font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);
-  font-weight:800;margin-bottom:20px;display:flex;align-items:center;gap:14px;
-}
-h2.sec::after{content:"";flex:1;height:2px;background:linear-gradient(90deg,var(--lime),transparent)}
-.theory p{margin-bottom:14px;max-width:68ch}
-.theory ul{margin:0 0 14px 20px;max-width:64ch}
-.theory li{margin-bottom:7px}
-.formula{
-  background:var(--surface-2);border:2px solid var(--yellow-deep);border-radius:12px;
-  padding:16px 20px;margin:18px 0;
-  font-family:var(--serif);font-size:17px;line-height:1.7;
-}
-.formula b{color:var(--accent-dark);background:var(--yellow);border-radius:4px;padding:0 4px}
-.warn{
-  border-left:4px solid var(--yellow-deep);background:#fefce8;
-  padding:13px 18px;border-radius:0 12px 12px 0;margin:18px 0;font-size:14.5px;
-}
-.warn b{color:#854d0e}
-
-.ex-list{display:flex;flex-direction:column}
-.ex-item{padding:20px 0;border-bottom:1px solid var(--line)}
-.ex-item:last-child{border-bottom:none}
-.ex-item .src{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--lime-deep);margin-bottom:6px;font-weight:800}
-.ex-item .en{font-family:var(--serif);font-size:19.5px;line-height:1.5}
-.ex-item .ru{font-size:14px;color:var(--muted);margin-top:6px}
-.ex-item .why{font-size:13.5px;color:var(--accent-dark);margin-top:8px;font-weight:500}
-.ex-item .why::before{content:"Навіщо це екзаменатору — ";color:var(--muted);font-weight:700}
-.hl{background:var(--yellow);border-radius:4px;padding:1px 4px;box-shadow:inset 0 -2px 0 var(--lime);font-weight:600}
-.hl b,.hl strong{font-weight:700}
-
-/* ---------- Exercises ---------- */
-.exercise{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:24px 26px;margin-bottom:22px}
-.exercise .ex-title{font-family:var(--serif);font-size:18.5px;font-weight:700;margin-bottom:4px;color:var(--accent-dark)}
-.exercise .ex-instr{font-size:14px;color:var(--muted);margin-bottom:18px}
-.item{padding:16px 0;border-top:1px dashed var(--line)}
-.item:first-of-type{border-top:none;padding-top:4px}
-.item .q{font-size:15px;margin-bottom:12px;line-height:1.6}
-.item .q .src-sentence{font-family:var(--serif);font-size:17px;display:block;margin:6px 0}
-.item .q .task-line{color:var(--lime-deep);font-size:14px;display:block;margin-top:4px;font-weight:700}
-.item .num{font-family:var(--serif);color:var(--accent);margin-right:8px;font-weight:700}
-
-.opts{display:flex;flex-direction:column;gap:8px}
-.opt{
-  text-align:left;background:var(--bg);border:2px solid var(--line);border-radius:10px;
-  padding:11px 15px;font-family:var(--serif);font-size:15.5px;line-height:1.45;color:var(--text);
-  cursor:pointer;transition:border-color .15s,background .15s;width:100%;
-}
-.opt:hover:not(:disabled){border-color:var(--accent);background:var(--surface-3)}
-.opt:disabled{cursor:default}
-.opt.correct{background:var(--ok-bg);border-color:var(--ok);color:var(--ok);font-weight:700}
-.opt.wrong{background:var(--bad-bg);border-color:var(--bad);color:var(--bad)}
-
-.gap-line{font-family:var(--serif);font-size:17.5px;line-height:2.3}
-.gap-input{
-  font-family:var(--serif);font-size:16.5px;color:var(--text);
-  border:none;border-bottom:3px solid var(--yellow-deep);background:var(--surface-2);
-  min-width:130px;max-width:220px;padding:2px 8px;margin:0 4px;text-align:center;outline:none;
-  border-radius:6px 6px 0 0;font-weight:600;
-}
-.gap-input:focus{border-bottom-color:var(--accent);background:var(--surface-3)}
-.gap-input.ok{border-bottom-color:var(--ok);color:var(--ok);background:var(--ok-bg)}
-.gap-input.bad{border-bottom-color:var(--bad);color:var(--bad);background:var(--bad-bg)}
-
-textarea.answer{
-  width:100%;min-height:74px;resize:vertical;
-  border:2px solid var(--line);border-radius:10px;background:var(--bg);
-  font-family:var(--serif);font-size:16px;line-height:1.55;color:var(--text);
-  padding:12px 14px;outline:none;
-}
-textarea.answer:focus{border-color:var(--accent);background:#fff}
-
-.feedback{font-size:14px;margin-top:10px;border-radius:10px;padding:10px 14px;display:none;font-weight:500}
-.feedback.show{display:block}
-.feedback.ok{background:var(--ok-bg);color:var(--ok);border:2px solid var(--ok-line);font-weight:700}
-.feedback.bad{background:var(--bad-bg);color:var(--bad);border:2px solid var(--bad-line);font-weight:700}
-.feedback .why-line{color:var(--text);margin-top:5px;display:block;font-weight:400}
-.model{
-  display:none;margin-top:10px;background:var(--surface-2);border:2px solid var(--yellow-deep);border-radius:10px;
-  padding:12px 16px;font-size:14.5px;
-}
-.model.show{display:block}
-.model .m-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#854d0e;font-weight:800;display:block;margin-bottom:4px}
-.model .m-text{font-family:var(--serif);font-size:16.5px}
-
-.actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
-.btn{
-  font-family:var(--sans);font-size:13.5px;font-weight:700;
-  background:var(--accent-dark);color:#fefce8;border:none;border-radius:99px;
-  padding:10px 24px;cursor:pointer;transition:background .18s,transform .18s;
-}
-.btn:hover{background:var(--accent);transform:translateY(-1px)}
-.btn-ghost{
-  font-family:var(--sans);font-size:13.5px;font-weight:700;
-  background:none;color:var(--accent-dark);border:2px solid var(--line);border-radius:99px;
-  padding:8px 20px;cursor:pointer;transition:border-color .18s,color .18s,background .18s;
-}
-.btn-ghost:hover{border-color:var(--accent);color:var(--accent);background:var(--surface-3)}
-
-.production{background:var(--surface-3);border:2px solid var(--lime);border-radius:16px;padding:26px 28px}
-.production .p-task{margin-bottom:18px}
-.production .p-task:last-child{margin-bottom:0}
-.production .p-label{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--lime-deep);margin-bottom:6px}
-.production .p-text{font-size:15px;margin-bottom:10px}
-
-/* ---------- Topbar (mobile) ---------- */
-.topbar{
-  display:none;position:sticky;top:0;z-index:50;
-  background:var(--bg);border-bottom:2px solid var(--line);
-  padding:14px 20px;align-items:center;justify-content:space-between;
-}
-.topbar .brand{font-size:20px}
-.burger{background:var(--accent-dark);color:#fefce8;border:none;border-radius:9px;padding:8px 14px;cursor:pointer;font-size:14px;font-weight:700;font-family:var(--sans)}
-
-@media(max-width:960px){
-  .sidebar{
-    position:fixed;z-index:60;left:0;top:0;bottom:0;height:auto;
-    transform:translateX(-100%);transition:transform .3s cubic-bezier(.19,1,.22,1);
-    width:300px;flex:none;box-shadow:0 0 60px rgba(20,48,28,.2);
-  }
-  .sidebar.open{transform:translateX(0)}
-  .topbar{display:flex}
-  .main{padding:0 22px 90px}
-  .cards{grid-template-columns:1fr}
-  .hero{padding:44px 0 36px}
-}
-.footnote{margin-top:70px;padding-top:24px;border-top:2px solid var(--line);font-size:13px;color:var(--muted)}
-.footnote a{color:var(--accent);font-weight:600}
+/* ===== INTRO / FOOTER ===== */
+.intro{background:var(--paper);border-radius:16px;padding:22px 24px;margin-bottom:22px;border:1px solid var(--line)}
+.intro h2{font-family:Georgia,serif;font-size:20px;margin-bottom:10px;color:var(--forest)}
+.intro p{font-size:14.5px;line-height:1.6;color:#4A5A52}
+.intro .steps{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.intro .step{flex:1;min-width:200px;background:var(--cream);border-radius:12px;padding:12px 14px;font-size:13.5px;line-height:1.5}
+.intro .step b{display:block;color:var(--forest);margin-bottom:3px}
+.intro .step span{color:var(--limedeep);font-weight:700}
+.reset{background:none;border:none;color:var(--muted);font-size:13px;cursor:pointer;text-decoration:underline;display:block;margin:20px auto 0}
+@media(max-width:600px){.tabs{flex-direction:column}.card-head{flex-direction:column;gap:8px}}
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<div class="topbar">
-  <a class="brand" href="#/">Grammar<span>Lab</span></a>
-  <button class="burger" id="burger">Зміст</button>
+<header>
+  <div class="kicker">IELTS Writing · Grammar for Essays</div>
+  <h1>Nominalization: практика перефразування</h1>
+  <p>Перетворюй прості речення на академічні (Band 7.5) за допомогою номіналізації. Пиши свій варіант, потім порівнюй зі зразком.</p>
+  <div class="progress-line">
+    <div class="progress-track"><div class="progress-fill" id="pfill"></div></div>
+    <div class="progress-label" id="plabel">0 / 16</div>
+  </div>
+</header>
+
+<div class="intro">
+  <h2>Як працювати</h2>
+  <p>Номіналізація — це коли дієслово чи прикметник стає іменником: <b>rise → a rise</b>, <b>develop → development</b>. Це головний сигнал академічного стилю для IELTS Writing.</p>
+  <div class="steps">
+    <div class="step"><b>1 · Прочитай</b>Просте речення (Band 5–6) і підказку — яке слово перетворити.</div>
+    <div class="step"><b>2 · Напиши</b>Свій варіант у полі. Не бійся помилок — тут немає автоперевірки.</div>
+    <div class="step"><b>3 · Порівняй</b>Відкрий зразок Band 7.5 і знайди відмінності. <span>Жовтим</span> виділено номіналізації.</div>
+    <div class="step"><b>4 · Відміть</b>Пройди самоперевірку за чек-листом і познач картку виконаною.</div>
+  </div>
 </div>
 
-<div class="layout">
-  <aside class="sidebar" id="sidebar">
-    <a class="brand" href="#/">Grammar<span>Lab</span></a>
-    <div class="brand-sub">IELTS Writing · Тренажер</div>
-    <nav class="nav" id="nav"></nav>
-    <div class="side-progress">
-      <div class="label"><span>Загальний прогрес</span><span id="sidePct">0%</span></div>
-      <div class="pbar"><i id="sideBar"></i></div>
-      <button class="reset-btn" id="resetBtn">Скинути весь прогрес</button>
-    </div>
-  </aside>
-  <main class="main"><div class="content" id="app"></div></main>
+<div class="tabs">
+  <button class="tab active" data-tab="t1">Writing Task 1<small>опис графіків і трендів</small></button>
+  <button class="tab" data-tab="t2">Writing Task 2<small>есей: аргументи й причини</small></button>
+</div>
+
+<div id="board"></div>
+
+<button class="reset" id="reset">Скинути прогрес</button>
 </div>
 
 <script>
-/* ============================================================
-   Grammar Lab — engine
-   ============================================================ */
-const STORE_KEY = "grammarlab-progress-v1";
-
-function loadStore(){
-  try{ return JSON.parse(localStorage.getItem(STORE_KEY)) || {}; }
-  catch(e){ return {}; }
-}
-function saveStore(s){ localStorage.setItem(STORE_KEY, JSON.stringify(s)); }
-let store = loadStore();
-function markDone(key){
-  if(!store[key]){ store[key] = 1; saveStore(store); refreshProgress(); }
-}
-function isDone(key){ return !!store[key]; }
-
-function norm(s){
-  return (s||"").toLowerCase()
-    .replace(/[.,!?;:"“”‘’()«»\[\]—–-]/g," ")
-    .replace(/[’']/g,"")
-    .replace(/\s+/g," ").trim();
-}
-function containsKw(text, kw){
-  kw = norm(kw);
-  if(!kw) return false;
-  const re = new RegExp("(^| )" + kw.replace(/[.*+?^${}()|[\]\\]/g,"\\$&").replace(/ /g,"\\s+") + "( |$)");
-  return re.test(" " + text + " ");
-}
-
-/* ---------- shared renderers ---------- */
-function tagChips(m){
-  let t = "";
-  if(m.tags.includes("T1")) t += '<span class="tag t1">Task 1</span>';
-  if(m.tags.includes("T2")) t += '<span class="tag t2">Task 2</span>';
-  let dots = '<span class="level" title="Складність">';
-  for(let i=1;i<=3;i++) dots += '<i class="' + (i<=m.level ? "on" : "") + '"></i>';
-  dots += "</span>";
-  return t + dots;
-}
-
-function itemKey(prefix, exI, itI){ return prefix + ":" + exI + ":" + itI; }
-
-function countItems(prefix, exercises){
-  let total = 0, done = 0;
-  exercises.forEach((ex, exI) => {
-    ex.items.forEach((_, itI) => {
-      total++;
-      if(isDone(itemKey(prefix, exI, itI))) done++;
-    });
-  });
-  return {total, done};
-}
-
-/* ---------- exercise HTML ---------- */
-function renderExercise(prefix, ex, exI){
-  let h = '<div class="exercise">';
-  h += '<div class="ex-title">' + ex.title + "</div>";
-  h += '<div class="ex-instr">' + ex.instruction + "</div>";
-
-  ex.items.forEach((it, itI) => {
-    const key = itemKey(prefix, exI, itI);
-    h += '<div class="item" data-key="' + key + '">';
-    h += '<div class="q"><span class="num">' + (itI+1) + ".</span>";
-
-    if(ex.type === "choice"){
-      h += it.q + "</div>";
-      h += '<div class="opts">';
-      it.opts.forEach((op, oI) => {
-        h += '<button class="opt" data-ex="' + exI + '" data-it="' + itI + '" data-o="' + oI + '">' + op + "</button>";
-      });
-      h += "</div>";
-      h += '<div class="feedback" id="fb-' + key + '"></div>';
-    }
-
-    if(ex.type === "gap"){
-      h += '<div class="gap-line">' + it.pre +
-           '<input class="gap-input" id="in-' + key + '" placeholder="…" autocomplete="off" spellcheck="false">' +
-           it.post + "</div></div>";
-      h += '<div class="feedback" id="fb-' + key + '"></div>';
-    }
-
-    if(ex.type === "transform"){
-      h += '<span class="src-sentence">' + it.src + "</span>";
-      h += '<span class="task-line">→ ' + it.task + "</span></div>";
-      h += '<textarea class="answer" id="ta-' + key + '" placeholder="Ваш варіант…"></textarea>';
-      h += '<div class="feedback" id="fb-' + key + '"></div>';
-      h += '<div class="model" id="md-' + key + '"><span class="m-label">Зразкова відповідь</span><span class="m-text">' + it.model + "</span></div>";
-    }
-    h += "</div>";
-  });
-
-  if(ex.type === "gap"){
-    h += '<div class="actions"><button class="btn" data-check-gap="' + exI + '">Перевірити</button></div>';
-  }
-  if(ex.type === "transform"){
-    h += '<div class="actions">' +
-         '<button class="btn" data-check-tr="' + exI + '">Перевірити</button>' +
-         '<button class="btn-ghost" data-show-models="' + exI + '">Показати зразки</button></div>';
-  }
-  h += "</div>";
-  return h;
-}
-
-/* ---------- exercise binding ---------- */
-function bindExercises(root, prefix, exercises){
-  /* choice */
-  root.querySelectorAll(".opt").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const exI = +btn.dataset.ex, itI = +btn.dataset.it, oI = +btn.dataset.o;
-      const ex = exercises[exI], it = ex.items[itI];
-      const key = itemKey(prefix, exI, itI);
-      const fb = root.querySelector("#fb-" + CSS.escape(key));
-      const opts = btn.parentElement.querySelectorAll(".opt");
-      if(oI === it.a){
-        opts.forEach(o => o.disabled = true);
-        btn.classList.add("correct");
-        fb.className = "feedback show ok";
-        fb.innerHTML = "Правильно!" + (it.why ? '<span class="why-line">' + it.why + "</span>" : "");
-        markDone(key);
-      } else {
-        btn.classList.add("wrong");
-        btn.disabled = true;
-        fb.className = "feedback show bad";
-        fb.innerHTML = "Не зовсім. Спробуйте ще раз." + (it.why ? '<span class="why-line">' + it.why + "</span>" : "");
-      }
-    });
-  });
-
-  /* gap */
-  root.querySelectorAll("[data-check-gap]").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const exI = +btn.dataset.checkGap;
-      const ex = exercises[exI];
-      ex.items.forEach((it, itI) => {
-        const key = itemKey(prefix, exI, itI);
-        const inp = root.querySelector("#in-" + CSS.escape(key));
-        const fb = root.querySelector("#fb-" + CSS.escape(key));
-        const val = norm(inp.value);
-        const ok = it.acc.some(a => containsKw(val, a) || val === norm(a));
-        inp.classList.remove("ok","bad");
-        if(ok){
-          inp.classList.add("ok");
-          fb.className = "feedback show ok";
-          fb.innerHTML = "Правильно!" + (it.why ? '<span class="why-line">' + it.why + "</span>" : "");
-          markDone(key);
-        } else {
-          inp.classList.add("bad");
-          fb.className = "feedback show bad";
-          fb.innerHTML = "Поки що невірно. Підказка: " + it.hint +
-            (it.why ? '<span class="why-line">' + it.why + "</span>" : "");
-        }
-      });
-    });
-  });
-
-  /* transform — check */
-  root.querySelectorAll("[data-check-tr]").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const exI = +btn.dataset.checkTr;
-      const ex = exercises[exI];
-      ex.items.forEach((it, itI) => {
-        const key = itemKey(prefix, exI, itI);
-        const ta = root.querySelector("#ta-" + CSS.escape(key));
-        const fb = root.querySelector("#fb-" + CSS.escape(key));
-        const val = norm(ta.value);
-        if(!val){
-          fb.className = "feedback show bad";
-          fb.innerHTML = "Напишіть свій варіант речення.";
-          return;
-        }
-        const missing = it.req.filter(g => !g.any.some(k => containsKw(val, k)));
-        if(missing.length === 0){
-          fb.className = "feedback show ok";
-          fb.innerHTML = "Чудово — структуру використано правильно! Порівняйте зі зразком нижче." +
-            (it.why ? '<span class="why-line">' + it.why + "</span>" : "");
-          root.querySelector("#md-" + CSS.escape(key)).classList.add("show");
-          markDone(key);
-        } else {
-          fb.className = "feedback show bad";
-          fb.innerHTML = "Структура поки неповна. Перевірте: " +
-            missing.map(g => g.hint).join("; ") + ".";
-        }
-      });
-    });
-  });
-
-  /* transform — show models */
-  root.querySelectorAll("[data-show-models]").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const exI = +btn.dataset.showModels;
-      exercises[exI].items.forEach((it, itI) => {
-        const key = itemKey(prefix, exI, itI);
-        root.querySelector("#md-" + CSS.escape(key)).classList.add("show");
-        markDone(key);
-      });
-    });
-  });
-
-  /* production reveals */
-  root.querySelectorAll("[data-reveal]").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const t = root.querySelector("#" + btn.dataset.reveal);
-      t.classList.toggle("show");
-      btn.textContent = t.classList.contains("show") ? "Сховати зразок" : "Показати зразок";
-    });
-  });
-}
-
-/* ---------- module / exam pages ---------- */
-function renderModule(m){
-  const prefix = "m:" + m.id;
-  const c = countItems(prefix, m.exercises);
-  const pct = c.total ? Math.round(c.done / c.total * 100) : 0;
-
-  let h = '<header class="mod-head">';
-  h += '<div class="kicker">Модуль ' + m.num + " · Граматика для Writing</div>";
-  h += "<h1>" + m.en + "</h1>";
-  h += '<div class="ru">' + m.ru + "</div>";
-  h += '<div class="mod-meta">' + tagChips(m) + "</div>";
-  h += '<div class="mod-progress"><div class="pbar"><i style="width:' + pct + '%"></i></div><span class="pct">' + c.done + " / " + c.total + " завдань</span></div>";
-  h += "</header>";
-
-  h += '<section class="block"><h2 class="sec">Теорія</h2><div class="theory">' + m.theory + "</div></section>";
-
-  h += '<section class="block"><h2 class="sec">Приклади в контексті IELTS</h2><div class="ex-list">';
-  m.examples.forEach(e => {
-    h += '<div class="ex-item"><div class="src">' + e.src + "</div>" +
-         '<div class="en">' + e.en + "</div>" +
-         (e.ru ? '<div class="ru">' + e.ru + "</div>" : "") +
-         '<div class="why">' + e.why + "</div></div>";
-  });
-  h += "</div></section>";
-
-  h += '<section class="block"><h2 class="sec">Практика</h2>';
-  m.exercises.forEach((ex, exI) => { h += renderExercise(prefix, ex, exI); });
-  h += "</section>";
-
-  h += '<section class="block"><h2 class="sec">Ваш хід</h2><div class="production">';
-  m.production.forEach((p, pI) => {
-    const rid = "prod-" + m.id + "-" + pI;
-    h += '<div class="p-task"><div class="p-label">' + p.label + "</div>" +
-         '<div class="p-text">' + p.prompt + "</div>" +
-         '<textarea class="answer" placeholder="Напишіть тут своє речення…"></textarea>' +
-         '<div class="actions"><button class="btn-ghost" data-reveal="' + rid + '">Показати зразок</button></div>' +
-         '<div class="model" id="' + rid + '"><span class="m-label">Один із можливих варіантів</span><span class="m-text">' + p.model + "</span></div></div>";
-  });
-  h += "</div></section>";
-
-  h += '<div class="footnote">Готово? Поверніться до <a href="#/">змісту</a> або пройдіть <a href="#/exam">фінальний тренінг</a>.</div>';
-  return h;
-}
-
-function renderExam(){
-  const prefix = "x";
-  const c = countItems(prefix, EXAM.exercises);
-  const pct = c.total ? Math.round(c.done / c.total * 100) : 0;
-  let h = '<header class="mod-head">';
-  h += '<div class="kicker">Фінальний тренінг · Exam Simulation</div>';
-  h += "<h1>Усі структури разом</h1>";
-  h += '<div class="ru">Змішані завдання формату IELTS Writing — тут уже немає підказок, яку структуру використовувати. Обирайте самі.</div>';
-  h += '<div class="mod-progress"><div class="pbar"><i style="width:' + pct + '%"></i></div><span class="pct">' + c.done + " / " + c.total + " завдань</span></div>";
-  h += "</header>";
-  h += '<section class="block">';
-  EXAM.exercises.forEach((ex, exI) => { h += renderExercise(prefix, ex, exI); });
-  h += "</section>";
-  h += '<div class="footnote">Чудова робота! Поверніться до <a href="#/">змісту</a>, щоб повторити окремі теми.</div>';
-  return h;
-}
-
-/* ---------- home ---------- */
-function plural(n, one, few, many){
-  const m10 = n % 10, m100 = n % 100;
-  if(m10 === 1 && m100 !== 11) return one;
-  if(m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) return few;
-  return many;
-}
-function renderHome(){
-  const all = totalProgress();
-  let h = '<section class="hero">';
-  h += '<div class="kicker">IELTS Writing · Інтерактивний тренажер</div>';
-  h += "<h1>Граматика, що<br>піднімає <em>бал</em></h1>";
-  h += '<p class="lead">11 ключових структур для Writing Task 1 і Task 2: теорія українською, приклади з реальних тем IELTS та практика з миттєвою перевіркою. Критерій Grammatical Range and Accuracy — це 25% вашої оцінки за лист.</p>';
-  h += '<div class="hero-stats"><span class="stat"><b>11</b>модулів</span><span class="stat"><b>' + all.total + "</b>" + plural(all.total,"завдання","завдання","завдань") + '</span><span class="stat"><b>4</b>формати практики</span><span class="stat"><b>1</b>фінальний тренінг</span></div>';
-  h += '<div class="overall"><div class="label"><span>Загальний прогрес</span><span>' + all.pct + '%</span></div><div class="pbar"><i style="width:' + all.pct + '%"></i></div></div>';
-  h += "</section>";
-
-  h += '<div class="cards">';
-  MODULES.forEach(m => {
-    const c = countItems("m:" + m.id, m.exercises);
-    const pct = c.total ? Math.round(c.done / c.total * 100) : 0;
-    h += '<a class="card" href="#/m/' + m.id + '">';
-    h += '<span class="num">Модуль ' + m.num + "</span>";
-    h += "<h3>" + m.en + "</h3>";
-    h += '<span class="ru">' + m.ru + "</span>";
-    h += '<div class="tags">' + tagChips(m) + "</div>";
-    h += '<div class="pbar"><i style="width:' + pct + '%"></i></div>';
-    h += '<span class="pct">' + (pct === 100 ? "Пройдено" : c.done + " / " + c.total) + "</span>";
-    h += "</a>";
-  });
-  const ec = countItems("x", EXAM.exercises);
-  const epct = ec.total ? Math.round(ec.done / ec.total * 100) : 0;
-  h += '<a class="card exam" href="#/exam">';
-  h += '<span class="num">Фінал</span><h3>Exam Simulation</h3>';
-  h += '<span class="ru">Змішаний тренінг за всіма структурами — як на справжньому іспиті</span>';
-  h += '<div class="tags"><span class="tag">Усі теми</span><span class="tag">Task 1 + Task 2</span></div>';
-  h += '<div class="pbar"><i style="width:' + epct + '%"></i></div>';
-  h += '<span class="pct">' + (epct === 100 ? "Пройдено" : ec.done + " / " + ec.total) + "</span>";
-  h += "</a>";
-  h += "</div>";
-  h += '<div class="footnote">Порада: проходьте модулі по порядку — кожен наступний спирається на попередні. Прогрес зберігається автоматично у вашому браузері.</div>';
-  return h;
-}
-
-/* ---------- progress ---------- */
-function totalProgress(){
-  let total = 0, done = 0;
-  MODULES.forEach(m => {
-    const c = countItems("m:" + m.id, m.exercises);
-    total += c.total; done += c.done;
-  });
-  const ec = countItems("x", EXAM.exercises);
-  total += ec.total; done += ec.done;
-  return {total, done, pct: total ? Math.round(done/total*100) : 0};
-}
-function refreshProgress(){
-  const all = totalProgress();
-  document.getElementById("sidePct").textContent = all.pct + "%";
-  document.getElementById("sideBar").style.width = all.pct + "%";
-  document.querySelectorAll("#nav a .dot").forEach(d => {
-    const id = d.dataset.mod;
-    if(!id) return;
-    const m = MODULES.find(x => x.id === id);
-    const c = countItems("m:" + id, m.exercises);
-    d.classList.toggle("on", c.done === c.total && c.total > 0);
-  });
-}
-
-/* ---------- nav ---------- */
-function buildNav(){
-  const nav = document.getElementById("nav");
-  let h = '<div class="nav-label">Почати</div>';
-  h += '<a href="#/" data-route="home"><span class="num">→</span>Огляд курсу</a>';
-  h += '<div class="nav-label">Модулі</div>';
-  MODULES.forEach(m => {
-    h += '<a href="#/m/' + m.id + '" data-route="' + m.id + '">' +
-         '<span class="num">' + String(m.num).padStart(2,"0") + "</span>" +
-         "<span>" + m.en + "</span>" +
-         '<span class="dot" data-mod="' + m.id + '">●</span></a>';
-  });
-  h += '<div class="nav-label">Перевірка</div>';
-  h += '<a href="#/exam" data-route="exam"><span class="num">★</span>Фінальний тренінг</a>';
-  nav.innerHTML = h;
-}
-function setActiveNav(route){
-  document.querySelectorAll("#nav a").forEach(a => {
-    a.classList.toggle("active", a.dataset.route === route);
-  });
-}
-
-/* ---------- router ---------- */
-function route(){
-  const hash = location.hash || "#/";
-  const app = document.getElementById("app");
-  let r = "home";
-  if(hash.startsWith("#/m/")){
-    const id = hash.slice(4);
-    const m = MODULES.find(x => x.id === id);
-    if(m){ app.innerHTML = renderModule(m); bindExercises(app, "m:" + m.id, m.exercises); r = id; }
-    else app.innerHTML = renderHome();
-  } else if(hash === "#/exam"){
-    app.innerHTML = renderExam(); bindExercises(app, "x", EXAM.exercises); r = "exam";
-  } else {
-    app.innerHTML = renderHome();
-  }
-  setActiveNav(r);
-  refreshProgress();
-  window.scrollTo(0,0);
-  document.getElementById("sidebar").classList.remove("open");
-}
-window.addEventListener("hashchange", route);
-
-document.getElementById("burger").addEventListener("click", () => {
-  document.getElementById("sidebar").classList.toggle("open");
-});
-document.getElementById("resetBtn").addEventListener("click", () => {
-  if(confirm("Скинути весь прогрес у всіх модулях?")){
-    store = {}; saveStore(store); route();
-  }
-});
-
-/* ============================================================
-   CONTENT — 11 modules (українською)
-   ============================================================ */
-const MODULES = [
-{
-  id:"participles", num:1, en:"Participle Clauses", ru:"Дієприкметникові звороти", tags:["T1","T2"], level:2,
-  theory:
-  "<p>Дієприкметниковий зворот дозволяє об'єднати дві дії в одне складне речення — саме такі речення екзаменатор шукає для Band 7+. Головне правило: <b>підмет в обох частинах має збігатися</b>.</p>" +
-  "<div class='formula'><b>-ing</b> (активна, одночасна дія): The number rose, <b>reaching</b> a peak in 2010.<br>" +
-  "<b>V3</b> (пасивна): <b>Built</b> in 1995, the factory was later expanded.<br>" +
-  "<b>Having + V3</b> (дія сталася раніше): <b>Having doubled</b>, the figure levelled off.</div>" +
-  "<ul>" +
-  "<li><b>Task 1:</b> ідеально для опису трендів (rose, reaching…), порівнянь (compared to…) та змін на картах (the area was modernised, becoming…).</li>" +
-  "<li><b>Task 2:</b> економія слів і академічний ритм (Living in cities, people… / Having considered both views, I believe…).</li>" +
-  "</ul>" +
-  "<div class='warn'><b>Типова помилка — dangling participle:</b> «Rising steadily, the graph shows…» — графік не може зростати. Правильно: «Rising steadily, the population reached…» — перевіряйте, хто виконує дію.</div>",
-  examples:[
-    {src:"Task 1 · Line graph", en:"The number of overseas visitors grew steadily, <span class='hl'>reaching</span> a peak of 5.2 million in 2015.", ru:"Кількість іноземних туристів зростала, досягнувши піку в 5,2 млн у 2015 році.", why:"два факти з графіка з'єднані в одне складне речення замість двох простих."},
-    {src:"Task 1 · Line graph", en:"<span class='hl'>Having declined</span> for a decade, the figure finally stabilised at around 40%.", ru:"Знизившись протягом десяти років, показник стабілізувався на рівні близько 40%.", why:"Having + V3 показує послідовність подій без повторення підмета."},
-    {src:"Task 1 · Map", en:"The old docklands, <span class='hl'>surrounded</span> by derelict warehouses, were transformed into a residential district.", ru:"Старі доки, оточені занедбаними складами, перетворилися на житловий район.", why:"V3-зворот замінює цілий підрядний which were surrounded — текст стає щільнішим."},
-    {src:"Task 2 · Essay", en:"<span class='hl'>Having considered</span> both perspectives, I am convinced that the benefits of remote work outweigh its drawbacks.", ru:"Розглянувши обидві точки зору, я переконаний, що переваги віддаленої роботи переважають її недоліки.", why:"сильна конструкція для висновку — демонструє гнучкість граматики."}
-  ],
-  exercises:[
-    {
-      type:"choice", title:"Оберіть граматично правильний варіант",
-      instruction:"Лише одне речення в кожній парі побудовано правильно. Звертайте увагу на підмет дієприкметникового звороту.",
-      items:[
-        {q:"Опис графіка (Task 1):", opts:["The price of oil fell sharply, reached a low of $30 in 2016.","The price of oil fell sharply, reaching a low of $30 in 2016.","The price of oil fell sharply, having reaching a low of $30 in 2016."], a:1, why:"Після коми потрібна -ing форма (reaching) як дієприкметниковий зворот результату; reached — це друга фінітна форма без сполучника, а having reaching — неіснуюча форма."},
-        {q:"Яке речення НЕ містить dangling participle?", opts:["Having risen steadily, the graph shows the population growth.","Having risen steadily, the population reached 9 million by 2020.","Rising steadily, the figures were shown on the graph."], a:1, why:"Дія rising/having risen має стосуватися population, а не graph чи figures."},
-        {q:"Опис процесу (Task 1): ___ in heated chambers, the cocoa beans are then packaged.", opts:["Roasting","Roasted","Having roasted"], a:1, why:"Боби зазнають дії — потрібен пасивний зворот: Roasted. Roasting означало б, що бони самі щось смажать."},
-        {q:"Есе (Task 2): ___ both sides of the argument, it is clear that stricter regulations are needed.", opts:["Considered","Having considered","Being consider"], a:1, why:"Having + V3 показує, що розгляд передує висновку. Підмет-виконавець тут узагальнений (we/the reader), що допустимо в академічному письмі."}
-      ]
-    },
-    {
-      type:"gap", title:"Поставте дієслово в потрібну форму дієприкметника",
-      instruction:"Впишіть лише форму дієслова з дужок (-ing, V3 або having + V3).",
-      items:[
-        {pre:"", post:" three countries, the chart illustrates changes in energy consumption. (compare)", acc:["comparing"], hint:"таблиця активно виконує порівняння — форма -ing", why:"Comparing three countries, the chart… — типовий початок огляду для Task 1."},
-        {pre:"The figure increased gradually, ", post:" 80% by 2015. (reach)", acc:["reaching"], hint:"результат дії — форма -ing", why:"Зворот із reaching поєднує тренд і його підсумкове значення."},
-        {pre:"", post:", the old hospital was replaced by a modern shopping centre. (demolish)", acc:["having been demolished","demolished"], hint:"будівля зазнала дії до заміни — Having been + V3 або просто V3", why:"Having been demolished підкреслює, що знесення передувало будівництву — класика опису карт."},
-        {pre:"", post:" alone, elderly people often require more social support. (live)", acc:["living"], hint:"люди самі живуть — форма -ing", why:"Living alone… — типовий початок речення в есе про демографію чи охорону здоров'я."}
-      ]
-    },
-    {
-      type:"transform", title:"Об'єднайте речення дієприкметниковим зворотом",
-      instruction:"Перепишіть кожну пару як одне речення, використовуючи вказаний тип звороту. Зміст не змінюйте.",
-      items:[
-        {src:"The number of private cars increased between 2000 and 2010. It then levelled off.", task:"Почніть із Having + V3", req:[{any:["having increased","having risen","having grown"],hint:"конструкція Having + V3"}], model:"Having increased between 2000 and 2010, the number of private cars levelled off.", why:"Having + V3 на початку речення — маркер Band 7+ у Task 1."},
-        {src:"Children are exposed to online advertising every day. As a result, they often develop materialistic values.", task:"Почніть із дієприкметникового звороту (Exposed… / Being exposed…)", req:[{any:["exposed"],hint:"дієприкметник exposed на початку речення"}], model:"Exposed to online advertising every day, children often develop materialistic values.", why:"Пасивний дієприкметниковий зворот замінює ціле речення-обставину."},
-        {src:"The water is heated to 100°C. After that, it passes through the cooling pipes.", task:"Почніть із Having been + V3", req:[{any:["having been heated"],hint:"Having been + V3 (пасив, попередня дія)"}], model:"Having been heated to 100°C, the water passes through the cooling pipes.", why:"В описі процесів Having been + V3 показує строгу послідовність етапів."}
-      ]
-    }
-  ],
-  production:[
-    {label:"Task 1", prompt:"На лінійному графіку: експорт зріс з $2 до $9 млрд за 20 років. Напишіть одне речення зі зворотом reaching / having grown.", model:"The value of exports rose dramatically over the two decades, reaching $9 billion by 2020. / Having grown steadily for twenty years, exports peaked at $9 billion."},
-    {label:"Task 2", prompt:"Тема: «University education should be free». Напишіть речення для висновку, почавши з Having considered…", model:"Having considered both sides of the argument, I believe that free university education would benefit society as a whole."}
-  ]
-},
-{
-  id:"passive", num:2, en:"The Passive Voice", ru:"Пасивний стан", tags:["T1","T2"], level:1,
-  theory:
-  "<p>Пасив ставить у центр <b>дію та її результат</b>, а не виконавця. Формула: <b>be + V3</b>, де be змінюється за часами. Виконавець або опускається, або вводиться через <b>by</b>.</p>" +
-  "<div class='formula'>The beans <b>are roasted</b>. · The forest <b>was cleared</b>. · The area <b>has been transformed</b>. · The law <b>should be introduced</b>. · <b>It is believed that</b>…</div>" +
-  "<ul>" +
-  "<li><b>Task 1, процеси та карти:</b> пасив — основа опису. Ми не знаємо, «хто» збирає каву, тому: the beans are harvested, dried and shipped.</li>" +
-  "<li><b>Task 2:</b> безособовий пасив (It is argued / believed / claimed that…) робить позицію об'єктивною та академічною замість розмовного «people think».</li>" +
-  "</ul>" +
-  "<div class='warn'><b>Типова помилка:</b> зайвий by-agent там, де виконавець очевидний або неважливий («the rice is grown by farmers» — очевидно). Додавайте by-фразу, лише якщо вона несе нову інформацію.</div>",
-  examples:[
-    {src:"Task 1 · Process", en:"After harvesting, the beans <span class='hl'>are roasted</span> at high temperatures and then <span class='hl'>ground</span> into a fine powder.", ru:"Після збору зерна обсмажують за високої температури, а потім перемелюють.", why:"весь ланцюжок етапів процесу будується на пасиві — це норма для diagram-завдань."},
-    {src:"Task 1 · Map", en:"The woodland to the north of the village <span class='hl'>was cleared</span> to make way for a new housing estate.", ru:"Ліс на північ від села було вирубано під новий житловий масив.", why:"was cleared + to make way for — готова формула для карт «до/після»."},
-    {src:"Task 1 · Map", en:"Over the period shown, the town centre <span class='hl'>has been completely pedestrianised</span>.", ru:"За зазначений період центр міста повністю зробили пішохідним.", why:"Present Perfect Passive для змін, видимих на карті «зараз»."},
-    {src:"Task 2 · Essay", en:"<span class='hl'>It is widely believed that</span> university education should be accessible to all social groups.", ru:"Широко поширена думка, що вища освіта має бути доступною для всіх соціальних груп.", why:"It is believed that — формальна заміна розмовному «many people think»."}
-  ],
-  exercises:[
-    {
-      type:"choice", title:"Оберіть правильну форму пасиву",
-      instruction:"Слідкуйте за часом і узгодженням підмета.",
-      items:[
-        {q:"Опис процесу виробництва чаю:", opts:["The leaves are pick by hand and then dried.","The leaves are picked by hand and then dried.","The leaves are picking by hand and then dried."], a:1, why:"are picked — Present Simple Passive (be + V3); picked — правильна третя форма дієслова pick."},
-        {q:"Опис карти (зміни вже відбулися):", opts:["The old airport has been replaced by a park.","The old airport has replaced by a park.","The old airport is been replaced by a park."], a:0, why:"Present Perfect Passive: has/have been + V3. У варіанті 2 немає been, у варіанті 3 неправильна форма be."},
-        {q:"Есе (Task 2) — найформальніший варіант:", opts:["People think that climate change is the biggest threat.","It is widely believed that climate change is the biggest threat.","Everybody believes that climate change is the biggest threat."], a:1, why:"Безособова конструкція It is widely believed that — стандарт академічного стилю для Band 7+."},
-        {q:"Оберіть речення без помилки:", opts:["New houses are being built on the outskirts every year.","New houses are being build on the outskirts every year.","New houses being built on the outskirts every year."], a:0, why:"Present Continuous Passive: are being + built (V3). Build замість built і відсутність are — типові помилки."}
-      ]
-    },
-    {
-      type:"gap", title:"Вставте дієслово в пасивній формі",
-      instruction:"Використовуйте відповідний час: Present Simple, Past Simple, Present Perfect або модальний пасив.",
-      items:[
-        {pre:"First, the raw materials ", post:" (deliver) to the factory by truck. — етап процесу, Present Simple", acc:["are delivered"], hint:"Present Simple Passive: are + V3", why:"Регулярний етап процесу — Present Simple Passive."},
-        {pre:"Between 1995 and 2015, the farmland ", post:" (convert) into a golf course. — зміни на карті", acc:["was converted"], hint:"конкретний період у минулому — Past Simple Passive", why:"Для карт із датами в минулому використовується was/were + V3."},
-        {pre:"Since 2010, the city centre ", post:" (modernise) significantly.", acc:["has been modernised","has been modernized"], hint:"з 2010 досі — Present Perfect Passive", why:"Since + минула дата вимагає Present Perfect: has been + V3."},
-        {pre:"It ", post:" (argue) that international tourism damages local cultures. — Task 2", acc:["is argued","is often argued","is sometimes argued"], hint:"безособова конструкція It is + V3 + that", why:"It is argued that — нейтральний спосіб подати чужу позицію в есе."}
-      ]
-    },
-    {
-      type:"transform", title:"Перебудуйте актив у пасив",
-      instruction:"Перепишіть речення так, щоб у фокусі опинилася дія, а не виконавець.",
-      items:[
-        {src:"Workers pack the dried tea into boxes and ship it abroad.", task:"Почніть із The dried tea…", req:[{any:["is packed"],hint:"Present Simple Passive is packed"},{any:["shipped","is shipped"],hint:"пасив і для другої дії (shipped)"}], model:"The dried tea is packed into boxes and (is then) shipped abroad.", why:"В описі процесу виконавець (workers) опускається — він очевидний і неважливий."},
-        {src:"The council demolished the old library and built a business centre in its place.", task:"Почніть із The old library…", req:[{any:["was demolished"],hint:"was demolished"},{any:["was built","replaced"],hint:"пасив другої дії або was replaced by"}], model:"The old library was demolished and (was) replaced by a business centre. / The old library was demolished, and a business centre was built in its place.", why:"Стандартна пара для карт: was demolished + was replaced by / was built."},
-        {src:"Many people believe that remote education is less effective than classroom teaching.", task:"Перепишіть як безособову конструкцію It is…", req:[{any:["it is believed","it is widely believed"],hint:"It is believed that"}], model:"It is (widely) believed that remote education is less effective than classroom teaching.", why:"Безособовий пасив робить твердження об'єктивним — саме це цінується в Task 2."}
-      ]
-    }
-  ],
-  production:[
-    {label:"Task 1 · Process", prompt:"Опишіть етап процесу: «вода випаровується, потім конденсується і збирається в резервуар» — 1–2 речення в пасиві.", model:"The water is heated until it evaporates. The steam is then condensed and collected in a storage tank."},
-    {label:"Task 2", prompt:"Тема: «Advertising targeting children should be banned». Напишіть речення з It is believed/argued that або модальним пасивом (should be + V3).", model:"It is often argued that advertising aimed at children should be strictly regulated, as young viewers cannot critically evaluate commercial messages."}
-  ]
-},
-{
-  id:"nominalization", num:3, en:"Nominalization", ru:"Номіналізація", tags:["T1","T2"], level:2,
-  theory:
-  "<p>Номіналізація — це перетворення дієслова або прикметника на <b>іменник</b>: rise → <b>a rise</b>, develop → <b>development</b>, efficient → <b>efficiency</b>. Це головний маркер академічного стилю.</p>" +
-  "<div class='formula'>The figure rose sharply → There was <b>a sharp rise</b> in the figure.<br>" +
-  "People consume more energy → <b>energy consumption</b> has increased.<br>" +
-  "The government introduced a tax → <b>the introduction</b> of a tax</div>" +
-  "<ul>" +
-  "<li><b>Task 1:</b> замість «it went up a lot» — a significant increase, a gradual decline, a dramatic fall. Номіналізація + прикметник = точний опис трендів.</li>" +
-  "<li><b>Task 2:</b> абстрактні іменники дозволяють формулювати теми: the development of technology, a reduction in crime, the improvement of healthcare.</li>" +
-  "</ul>" +
-  "<div class='warn'><b>Міра важлива:</b> три номіналізації в одному реченні роблять його важким («the implementation of the reduction of…»). Одна-дві на речення — ідеально.</div>",
-  examples:[
-    {src:"Task 1 · Trend", en:"There was <span class='hl'>a sharp increase</span> in car ownership between 1990 and 2005.", ru:"Між 1990 і 2005 роками відбулося різке зростання кількості автовласників.", why:"There was a sharp increase in… — базова формула опису трендів замість простого went up."},
-    {src:"Task 1 · Comparison", en:"The country experienced <span class='hl'>a gradual decline</span> in birth rates, followed by <span class='hl'>a slight recovery</span>.", ru:"Країна пережила поступове зниження народжуваності, за яким пішло невелике відновлення.", why:"ланцюжок номіналізацій із характеризуючими прикметниками — щільний академічний опис."},
-    {src:"Task 2 · Essay", en:"<span class='hl'>The rapid development of</span> artificial intelligence has transformed the labour market.", ru:"Стрімкий розвиток штучного інтелекту трансформував ринок праці.", why:"номіналізація development дозволяє зробити абстрактне явище підметом — основа академічної аргументації."},
-    {src:"Task 2 · Essay", en:"<span class='hl'>A reduction in</span> working hours could lead to <span class='hl'>an improvement in</span> employees' mental health.", ru:"Скорочення робочого часу могло б призвести до покращення психічного здоров'я працівників.", why:"a reduction in / an improvement in — готові колокації для причинно-наслідкової аргументації."}
-  ],
-  exercises:[
-    {
-      type:"choice", title:"Який варіант академічніший?",
-      instruction:"Оберіть формулювання, більш відповідне для IELTS Writing.",
-      items:[
-        {q:"Task 1, опис зростання:", opts:["The number of tourists went up a lot in 2018.","There was a considerable rise in the number of tourists in 2018."], a:1, why:"went up a lot — розмовне; a considerable rise — номіналізація з точним прикметником."},
-        {q:"Task 1, опис падіння:", opts:["Sales dropped dramatically, which was sudden.","The company saw a dramatic drop in sales."], a:1, why:"a dramatic drop in sales — компактна номіналізація замість дієслівної конструкції."},
-        {q:"Task 2, вступне речення:", opts:["Because technology develops quickly, jobs change.","The rapid advancement of technology is reshaping the nature of work."], a:1, why:"The rapid advancement of technology — абстрактний підмет робить речення академічним."},
-        {q:"Task 2, про наслідки:", opts:["If cities get more crowded, housing will cost more.","Growing urbanisation leads to an increase in housing costs."], a:1, why:"urbanisation / an increase in housing costs — дві коректні номіналізації замість розмовних дієслів."}
-      ]
-    },
-    {
-      type:"gap", title:"Перетворіть слово в дужках на іменник",
-      instruction:"Впишіть правильну форму іменника. Слідкуйте за правописом.",
-      items:[
-        {pre:"There was a steady ", post:" in average temperatures over the century. (grow)", acc:["growth"], hint:"grow → іменник на -th", why:"growth — форма, яку часто плутають: grow → growth (не growness)."},
-        {pre:"The ", post:" of a new tax on fuel caused public protests. (introduce)", acc:["introduction"], hint:"introduce → introd… + uction", why:"The introduction of… — часта конструкція під час опису урядових заходів."},
-        {pre:"Online education offers greater ", post:" for working adults. (flexible)", acc:["flexibility"], hint:"прикметник на -ible → іменник на -ibility", why:"flexible → flexibility; аналогічно: possible → possibility, responsible → responsibility."},
-        {pre:"A significant ", post:" in air quality has been observed in industrial areas. (worse, дієслово)", acc:["worsening","deterioration"], hint:"потрібен іменник «погіршення»", why:"deterioration / worsening — точні іменники для негативних трендів."}
-      ]
-    },
-    {
-      type:"transform", title:"Перепишіть через номіналізацію",
-      instruction:"Збережіть зміст, але замініть дієслівну конструкцію іменником.",
-      items:[
-        {src:"The population of the city grew rapidly between 2000 and 2020.", task:"Почніть із There was…", req:[{any:["there was"],hint:"конструкція There was a …"},{any:["growth","increase","rise"],hint:"іменник (growth / increase / rise)"}], model:"There was a rapid growth in the population of the city between 2000 and 2020. / The city saw a rapid population growth between 2000 and 2020.", why:"There was a + прикметник + іменник + in — універсальний шаблон Task 1."},
-        {src:"People consume far more sugar than they did fifty years ago.", task:"Почніть із Sugar consumption…", req:[{any:["consumption"],hint:"іменник consumption"}], model:"Sugar consumption has increased significantly over the last fifty years. / Sugar consumption is far higher than it was fifty years ago.", why:"Номіналізація дозволяє зробити явище підметом і описувати його далі."},
-        {src:"The government invested heavily in renewable energy, so pollution fell.", task:"Об'єднайте, почавши з Heavy investment…", req:[{any:["investment"],hint:"investment"},{any:["reduction","fall","decrease","decline"],hint:"іменник для падіння забруднення"}], model:"Heavy investment in renewable energy led to a reduction in pollution (levels).", why:"investment in + led to + a reduction in — зв'язка двох номіналізацій показує причину й наслідок в одному реченні."}
-      ]
-    }
-  ],
-  production:[
-    {label:"Task 1", prompt:"Дані: у 2010 році безробіття становило 4%, у 2020 — 11%. Опишіть зміну одним реченням із номіналізацією (There was… / saw a…).", model:"There was a significant rise in unemployment, from 4% in 2010 to 11% in 2020. / The country saw a sharp increase in its unemployment rate over the decade."},
-    {label:"Task 2", prompt:"Тема: «Чи варто заборонити автомобілі в центрі міст?» Напишіть речення-тезу з двома номіналізаціями.", model:"The restriction of private cars in city centres would lead to a noticeable improvement in air quality and public health."}
-  ]
-},
-{
-  id:"time", num:4, en:"Clauses of Time", ru:"Підрядні речення часу", tags:["T1","T2"], level:1,
-  theory:
-  "<p>Підрядні часу задають послідовність подій: <b>when, while, after, before, until, as soon as, once, by the time</b>. У Task 1 вони незамінні для опису етапів процесу та хронології графіків.</p>" +
-  "<div class='formula'><b>After</b> the figures peaked, they declined. · <b>Once</b> the mixture has cooled, it is poured into moulds. · <b>By the time</b> the station opened, the line had been extended.</div>" +
-  "<ul>" +
-  "<li><b>Пунктуація:</b> підрядне на початку речення → кома після нього. Наприкінці — без коми: The figures declined after they peaked.</li>" +
-  "<li><b>Майбутній час заборонений</b> після when / after / before / until / as soon as: «When the law <s>will be</s> IS introduced…». Це одна з найпоширеніших помилок!</li>" +
-  "<li><b>Once / By the time</b> + Perfect — для строгої послідовності етапів у процесах.</li>" +
-  "</ul>" +
-  "<div class='warn'><b>While vs During:</b> while + клауза (while sales were falling), during + іменник (during the recession). Не змішуйте: <s>during sales were falling</s>.</div>",
-  examples:[
-    {src:"Task 1 · Line graph", en:"<span class='hl'>After</span> the figures peaked in 2000, they began a steady decline.", ru:"Після того як показники досягли піку в 2000 році, почалося їхнє стабільне зниження.", why:"хронологія тренда запакована в одне речення замість двох."},
-    {src:"Task 1 · Process", en:"<span class='hl'>Once</span> the mixture has cooled, it is poured into moulds and left to harden.", ru:"Як тільки суміш охолола, її розливають у форми й лишають застигати.", why:"Once + Present Perfect — точна послідовність етапів процесу."},
-    {src:"Task 1 · Map", en:"<span class='hl'>By the time</span> the new stadium opened, the surrounding roads had been widened.", ru:"До моменту відкриття нового стадіону прилеглі дороги вже були розширені.", why:"By the time + Past Perfect показує, яка зміна сталася раніше — важливо для карт."},
-    {src:"Task 2 · Essay", en:"<span class='hl'>When</span> young people enter the job market, practical skills matter more than theoretical knowledge.", ru:"Коли молодь виходить на ринок праці, практичні навички важливіші за теоретичні знання.", why:"узагальнювальне when + Present Simple — природний спосіб почати аргумент."}
-  ],
-  exercises:[
-    {
-      type:"choice", title:"Оберіть правильний варіант",
-      instruction:"Перевіряйте час дієслова після сполучника та пунктуацію.",
-      items:[
-        {q:"Task 2, про майбутнє:", opts:["When the new law will be introduced, emissions will fall.","When the new law is introduced, emissions will fall.","When the new law introduced, emissions will fall."], a:1, why:"Після when у значенні майбутнього використовується Present Simple, а не will."},
-        {q:"Task 1, процес:", opts:["Before the juice is bottled, it is filtered twice.","Before the juice is bottled it is filtered twice.","Before, the juice is bottled, it is filtered twice."], a:0, why:"Підрядне попереду → одна кома після всього підрядного (…bottled,). Усередині підрядного ком немає."},
-        {q:"Яке речення коректне?", opts:["During the price fell, demand increased.","While the price was falling, demand increased.","While the price fell demand, increased."], a:1, why:"While + підрядне з дієсловом; during вимагає іменника (during the fall)."},
-        {q:"Task 1, графік:", opts:["As soon as the rate reached 5%, it had started to fall.","As soon as the rate reached 5%, it started to fall.","As soon as the rate will reach 5%, it starts to fall."], a:1, why:"Обидві дії в минулому, одна одразу за іншою: as soon as + Past Simple … Past Simple. Past Perfect тут непотрібен."}
-      ]
-    },
-    {
-      type:"gap", title:"Вставте відповідний сполучник часу",
-      instruction:"Обирайте з: after, before, until, once, by the time, while, as soon as.",
-      items:[
-        {pre:"", post:" the survey was conducted, the results were analysed by two independent teams.", acc:["after","once","when"], hint:"спочатку опитування, потім аналіз — сполучник «після того як»", why:"After/Once + Past Simple (або Perfect) для послідовності завершених подій."},
-        {pre:"The machine runs ", post:" the temperature reaches a critical level, and then it shuts down automatically.", acc:["until"], hint:"машина працює аж до певного моменту", why:"Until = «доти доки не» — межа дії в часі."},
-        {pre:"", post:" the new terminal was opened in 2010, the old one had already been closed for two years.", acc:["by the time"], hint:"одна подія завершилася РАНІШЕ за іншу — «до моменту»", why:"By the time + Past Simple … Past Perfect — показує, що закриття передувало відкриттю."},
-        {pre:"", post:" men spent an average of 45 hours per week at work, women spent only 30. (контраст даних на графіку)", acc:["while","whereas"], hint:"сполучник протиставлення двох рядів даних", why:"While/Whereas у значенні контрасту — робоча конячка порівняння в Task 1."}
-      ]
-    },
-    {
-      type:"transform", title:"Об'єднайте речення сполучником часу",
-      instruction:"Поєднайте пару в одне речення з указаним сполучником.",
-      items:[
-        {src:"The clay is shaped into bricks. Then the bricks are dried in a kiln.", task:"Використайте once або after", req:[{any:["once","after"],hint:"once / after на початку"},{any:["shaped"],hint:"пасивна форма shaped зберігається"}], model:"Once the clay has been shaped into bricks, they are dried in a kiln. / After the clay is shaped into bricks, they are dried in a kiln.", why:"Once + Present Perfect Passive — еталонна зв'язка етапів процесу."},
-        {src:"Oil prices rose sharply in 2008. Immediately afterwards, demand for electric cars grew.", task:"Використайте as soon as або when", req:[{any:["as soon as","when"],hint:"as soon as / when"}], model:"As soon as oil prices rose sharply in 2008, demand for electric cars grew. / When oil prices rose sharply in 2008, demand for electric cars grew.", why:"As soon as підкреслює негайну реакцію одного показника на інший."},
-        {src:"Children will leave school at eighteen. They will face a highly competitive job market.", task:"Використайте when (пам'ятайте про заборону will після сполучника!)", req:[{any:["when"],hint:"when"},{any:["leave"],hint:"Present Simple leave замість will leave"}], model:"When children leave school at eighteen, they will face a highly competitive job market.", why:"Will залишається лише в головній частині — у підрядному часу його бути не повинно."}
-      ]
-    }
-  ],
-  production:[
-    {label:"Task 1 · Process", prompt:"Опишіть 2 етапи будь-якого процесу (виробництво паперу, фільтрація води), зв'язавши їх через once / after / before.", model:"After the wood chips have been washed, they are pressed into thin sheets. Once the sheets are dry, they are cut to standard sizes."},
-    {label:"Task 2", prompt:"Напишіть речення про освіту або технології, почавши з When + Present Simple (без will!).", model:"When students are given more autonomy, they tend to develop stronger problem-solving skills."}
-  ]
-},
-{
-  id:"reason", num:5, en:"Clauses of Reason", ru:"Підрядні речення причини", tags:["T1","T2"], level:1,
-  theory:
-  "<p>Пояснюємо, <b>чому</b> щось відбувається. Головна відмінність — що стоїть після слова-зв'язки: ціле речення чи іменник.</p>" +
-  "<div class='formula'>+ клауза (S + V): <b>because / since / as</b> — Sales fell <b>because</b> costs rose.<br>" +
-  "+ іменник: <b>because of / due to / owing to</b> — Sales fell <b>because of</b> rising costs.</div>" +
-  "<ul>" +
-  "<li><b>As / Since</b> на початку речення звучать формальніше, ніж because: As cities grow, housing becomes scarce.</li>" +
-  "<li><b>Due to / owing to</b> ідеально поєднуються з номіналізацією (модуль 3): due to a sharp rise in prices.</li>" +
-  "<li><b>Because of</b> — нейтральний, доречний в обох частинах Writing.</li>" +
-  "</ul>" +
-  "<div class='warn'><b>Типова помилка:</b> «due to» + клауза: <s>The flight was cancelled due to it was foggy</s>. Правильно: due to the fog / because it was foggy. І пам'ятайте: «the reason is because…» — плеоназм, пишіть «the reason is that…».</div>",
-  examples:[
-    {src:"Task 1 · Chart", en:"Coal consumption fell sharply <span class='hl'>because of a dramatic rise</span> in natural gas production.", ru:"Споживання вугілля різко впало через різке зростання видобутку газу.", why:"because of + номіналізація — два високобальні навички в одному реченні."},
-    {src:"Task 2 · Essay", en:"<span class='hl'>As</span> cities become more crowded, affordable housing is increasingly scarce.", ru:"Оскільки міста стають дедалі більш перенаселеними, доступного житла дедалі менше.", why:"As на початку речення — формальний маркер причини, ідеальний для тези."},
-    {src:"Task 2 · Essay", en:"Many graduates cannot find employment, <span class='hl'>since</span> their degrees lack a practical component.", ru:"Багато випускників не можуть знайти роботу, оскільки в їхніх програмах немає практичної складової.", why:"since в середині речення трохи формальніше за because — різноманітність сполучників цінується екзаменатором."},
-    {src:"Task 1 · Process", en:"<span class='hl'>Owing to</span> the high pressure inside the chamber, evaporation occurs almost instantly.", ru:"Завдяки високому тиску в камері випаровування відбувається майже миттєво.", why:"owing to — рідкісна й формальна зв'язка, виділяє відповідь на тлі типових because."}
-  ],
-  exercises:[
-    {
-      type:"choice", title:"Because чи because of?",
-      instruction:"Оберіть варіант, де зв'язка використана граматично правильно.",
-      items:[
-        {q:"", opts:["The event was cancelled because of the weather was bad.","The event was cancelled because of the bad weather.","The event was cancelled because of it rained."], a:1, why:"Because of вимагає іменника (the bad weather), а не клаузи."},
-        {q:"", opts:["Due to the population is ageing, healthcare costs are rising.","Because the population is ageing, healthcare costs are rising.","Because of the population is ageing, healthcare costs are rising."], a:1, why:"Перед клаузою (the population is ageing) потрібен because/as/since; due to і because of вимагають іменника."},
-        {q:"Який початок найформальніший для есе?", opts:["Because of people live longer, pensions are expensive.","As people live longer, pension systems are under pressure.","People live longer, so pensions are expensive."], a:1, why:"As + клауза на початку — формально й точно; so — радше розмовна зв'язка, а because of тут неможливий."},
-        {q:"", opts:["The reason for the decline is because of falling demand.","The reason for the decline is that demand has fallen.","The reason for the decline is due to demand fell."], a:1, why:"The reason is that… — єдиний коректний варіант; because/due to після the reason is — плеоназм."}
-      ]
-    },
-    {
-      type:"gap", title:"Вставте зв'язку причини",
-      instruction:"Обирайте з: because, since, as, because of, due to, owing to. Дивіться, що йде далі — клауза чи іменник.",
-      items:[
-        {pre:"Tourism in the region declined ", post:" the closure of the only airport.", acc:["because of","due to","owing to"], hint:"далі іменник (the closure)", why:"Зв'язки з of/to + іменник."},
-        {pre:"", post:" renewable energy is becoming cheaper, many countries are closing coal plants.", acc:["as","since","because"], hint:"потрібен сполучник перед клаузою; два з них найформальніші", why:"As/Since на початку речення — формальний тон для Task 2."},
-        {pre:"The experiment failed ", post:" a lack of funding.", acc:["because of","due to","owing to"], hint:"a lack of funding — іменна група", why:"Знову: because of/due to + noun phrase."},
-        {pre:"", post:" to the rapid growth of online shopping, many high-street shops have closed.", acc:["due","owing"], hint:"фраза з 2 слів, перше слово на d або o", why:"Due to / Owing to + номіналізація (the rapid growth) — чудовий початок речення для обох частин."}
-      ]
-    },
-    {
-      type:"transform", title:"Об'єднайте речення зв'язкою причини",
-      instruction:"Поєднайте пару в одне речення з указаною зв'язкою.",
-      items:[
-        {src:"Production costs rose sharply. The company increased its prices.", task:"Використайте because of + номіналізацію", req:[{any:["because of","due to","owing to"],hint:"because of / due to"},{any:["rise","increase","growth"],hint:"іменник (a sharp rise / increase)"}], model:"The company increased its prices because of a sharp rise in production costs. / Because of a sharp rise in production costs, the company increased its prices.", why:"Тренуємо зв'язку причини + номіналізацію одночасно."},
-        {src:"Young people are moving to big cities. Rural schools are losing pupils.", task:"Почніть з As або Since", req:[{any:["as ","since"],hint:"As/Since на початку"}], model:"As young people are moving to big cities, rural schools are losing pupils. / Since young people are moving to big cities, rural schools are losing pupils.", why:"Причина на початку речення задає логіку всього аргументу."},
-        {src:"There was severe air pollution. The match was postponed.", task:"Використайте due to", req:[{any:["due to"],hint:"due to"},{any:["severe air pollution","the severe air pollution"],hint:"іменна група після due to"}], model:"The match was postponed due to severe air pollution. / Due to severe air pollution, the match was postponed.", why:"Due to + noun — компактно й формально; не перетворюйте на due to the air was polluted."}
-      ]
-    }
-  ],
-  production:[
-    {label:"Task 1", prompt:"На графіку продажі електромобілів зросли. Причина: уряд запровадив субсидії. Напишіть одне речення з because of / due to + іменник.", model:"Sales of electric cars rose significantly due to the introduction of government subsidies. / Owing to generous government subsidies, electric car sales doubled."},
-    {label:"Task 2", prompt:"Тема: «Чому молодь обирає фріланс?» Напишіть речення-аргумент, почавши з As або Since.", model:"As traditional nine-to-five jobs offer little flexibility, many young professionals are turning to freelance work."}
-  ]
-},
-{
-  id:"result", num:6, en:"Clauses of Result", ru:"Підрядні речення наслідку", tags:["T1","T2"], level:2,
-  theory:
-  "<p>Показуємо, <b>до чого призвела</b> подія. Ключова граматична розвилка — частина мови й пунктуація.</p>" +
-  "<div class='formula'><b>so</b> + клауза (сполучник, у середині): Demand rose, <b>so</b> prices increased.<br>" +
-  "<b>therefore / consequently / as a result</b> (прислівники!): Demand rose<b>; therefore,</b> prices increased.<br>" +
-  "<b>so + adj/adv + that</b>: The cost was <b>so</b> high <b>that</b> the project was abandoned.<br>" +
-  "<b>such (a) + noun + that</b>: It was <b>such a</b> sharp rise <b>that</b> supplies ran out.<br>" +
-  "<b>thereby + V-ing</b>: Taxes were cut, <b>thereby boosting</b> consumption.</div>" +
-  "<ul>" +
-  "<li><b>Therefore / consequently</b> — НЕ сполучники. Між двома клаузами потрібна крапка з комою або крапка: <s>Demand rose, therefore prices increased</s> — коми замало!</li>" +
-  "<li><b>Thereby + -ing</b> — елегантна зв'язка результату, поєднує наслідок із дієприкметниковим зворотом (модуль 1).</li>" +
-  "</ul>" +
-  "<div class='warn'><b>So vs so that:</b> so = «тому» (результат), so that = «щоб» (мета, модуль 7). The tax was raised so that revenue would grow — мета; revenue grew, so the tax was cut — результат.</div>",
-  examples:[
-    {src:"Task 1 · Chart", en:"Demand for electric cars rose sharply<b>;</b> <span class='hl'>consequently,</span> manufacturers expanded production.", ru:"Попит на електромобілі різко зріс; отже, виробники розширили виробництво.", why:"крапка з комою + consequently + кома — зразкова пунктуація прислівника-конектора."},
-    {src:"Task 2 · Essay", en:"The cost of the project was <span class='hl'>so high that</span> the government had to abandon it.", ru:"Вартість проєкту була настільки високою, що уряд мусив від нього відмовитися.", why:"so + adjective + that — виразна конструкція результату для Band 7+."},
-    {src:"Task 1 · Trend", en:"The government lowered interest rates, <span class='hl'>thereby stimulating</span> consumer spending.", ru:"Уряд знизив процентні ставки, стимулюючи тим самим споживчі витрати.", why:"thereby + V-ing об'єднує причину й результат в одне речення без сполучників."},
-    {src:"Task 2 · Essay", en:"Air travel has become <span class='hl'>such an</span> affordable option <span class='hl'>that</span> overseas holidays are no longer a luxury.", ru:"Авіаперельоти стали настільки доступними, що відпочинок за кордоном більше не розкіш.", why:"such + a/an + noun + that — пара до so + adjective + that, урізноманітнює текст."}
-  ],
-  exercises:[
-    {
-      type:"choice", title:"Пунктуація та вибір зв'язки",
-      instruction:"Лише один варіант у кожному рядку оформлений правильно.",
-      items:[
-        {q:"", opts:["Tuition fees increased, therefore fewer students could afford university.","Tuition fees increased; therefore, fewer students could afford university.","Tuition fees increased therefore, fewer students could afford university."], a:1, why:"Therefore — прислівник: перед ним крапка з комою (або крапка), після — кома."},
-        {q:"", opts:["The price of fuel rose, so transport costs went up.","The price of fuel rose; so, transport costs went up.","The price of fuel rose. So, transport costs went up."], a:0, why:"So — сполучник: ставиться в середині після коми. Варіант 3 допустимий у неформальному стилі, але в IELTS краще сполучникове so після коми."},
-        {q:"", opts:["The rise was so sharp that supplies ran out.","The rise was so sharp, that supplies ran out.","The rise was such sharp that supplies ran out."], a:0, why:"So + adjective + that без коми; such вимагає іменника (such a sharp rise)."},
-        {q:"", opts:["It was such rapid growth that the infrastructure could not cope.","It was such a rapid growth that the infrastructure could not cope.","It was so a rapid growth that the infrastructure could not cope."], a:1, why:"Such + a + adjective + countable noun + that. Артикль a обов'язковий перед злічуваним іменником."}
-      ]
-    },
-    {
-      type:"gap", title:"Вставте so, such, therefore, consequently або thereby",
-      instruction:"Дивіться на пунктуацію та на те, що йде за пропуском.",
-      items:[
-        {pre:"Online shopping has grown enormously; ", post:", many physical stores have closed.", acc:["consequently","therefore"], hint:"після крапки з комою потрібен прислівник-конектор із комою", why:"; consequently, — зразкове оформлення прислівника наслідку."},
-        {pre:"Housing in the capital is ", post:" expensive that young families are moving to the suburbs.", acc:["so"], hint:"перед прикметником — одне коротке слово", why:"so + adjective + that."},
-        {pre:"The company introduced automation, ", post:" reducing its labour costs by 30%.", acc:["thereby"], hint:"слово перед -ing формою, що означає «тим самим»", why:"thereby + V-ing — зв'язка результату з дієприкметниковим зворотом."},
-        {pre:"It was ", post:" a severe drought that the harvest was almost completely lost.", acc:["such"], hint:"перед a + adjective + noun", why:"such a + adjective + noun + that."}
-      ]
-    },
-    {
-      type:"transform", title:"Об'єднайте, виразивши наслідок",
-      instruction:"Поєднайте пару речень указаним способом.",
-      items:[
-        {src:"Internet access expanded rapidly in rural areas. Small businesses gained new markets.", task:"Використайте therefore або consequently (з правильною пунктуацією!)", req:[{any:["therefore","consequently"],hint:"therefore / consequently"},{any:[";","."],hint:"крапка з комою або крапка перед прислівником"}], model:"Internet access expanded rapidly in rural areas; consequently, small businesses gained new markets. / Internet access expanded rapidly in rural areas. Therefore, small businesses gained new markets.", why:"Перевіряємо і зв'язку, і пунктуацію — обидві помилки трапляються однаково часто."},
-        {src:"The new highway reduced journey times. This boosted trade between the two cities.", task:"Використайте thereby + V-ing", req:[{any:["thereby"],hint:"thereby"},{any:["boosting"],hint:"-ing форма дієслова boost"}], model:"The new highway reduced journey times, thereby boosting trade between the two cities.", why:"Одне речення замість двох — щільність тексту зростає, слів стає менше."},
-        {src:"The exam was extremely difficult. Only ten percent of the candidates passed.", task:"Використайте so…that", req:[{any:["so"],hint:"so перед прикметником"},{any:["that"],hint:"that після прикметника"}], model:"The exam was so difficult that only ten percent of the candidates passed.", why:"so + adjective + that — посилює аргумент і показує контроль складної структури."}
-      ]
-    }
-  ],
-  production:[
-    {label:"Task 1", prompt:"Ціни на житло зросли на 40% за п'ять років. Наслідок — попит на оренду зріс. Опишіть одним реченням (therefore / thereby / so…that).", model:"House prices rose by 40% in five years; consequently, demand for rental property increased. / House prices rose so sharply that demand for rental property surged."},
-    {label:"Task 2", prompt:"Тема: «Вплив соцмереж на підлітків». Напишіть речення з so + adjective + that або such + noun + that.", model:"Social media has become such an integral part of teenagers' lives that limiting its use requires joint efforts from parents and schools."}
-  ]
-},
-{
-  id:"purpose", num:7, en:"Clauses of Purpose", ru:"Підрядні речення мети", tags:["T2"], level:2,
-  theory:
-  "<p>Пояснюємо, <b>навіщо</b> щось робиться. Вибір конструкції залежить від того, що йде далі — інфінітив чи ціле речення.</p>" +
-  "<div class='formula'>+ інфінітив: <b>to / in order to / so as to</b> — invest in transport <b>to reduce</b> congestion.<br>" +
-  "+ клауза: <b>so that</b> + S + V — invest in transport <b>so that</b> commuters can save time.<br>" +
-  "заперечення: <b>in order not to / so as not to</b> — <b>so as not to</b> discourage students.</div>" +
-  "<ul>" +
-  "<li><b>In order to / so as to</b> — формальніші за простий to, ідеальні для Task 2 (речення-рішення, рекомендації).</li>" +
-  "<li><b>So that</b> обов'язковий, коли в мети інший підмет: The school extended the library hours so that students could study after classes (мету виконують students, а не school).</li>" +
-  "<li><b>For + noun / V-ing:</b> a scheme for reducing waste — теж спосіб виразити мету, часто з номіналізацією.</li>" +
-  "</ul>" +
-  "<div class='warn'><b>Типова помилка:</b> «for to + V»: <s>They built a shelter for to protect animals</s>. Правильно: to protect / in order to protect. Ще: після so that зазвичай стоїть модальне дієслово (can/could/will/would), а не теперішній час.</div>",
-  examples:[
-    {src:"Task 2 · Solution", en:"Governments should invest in public transport <span class='hl'>in order to reduce</span> urban congestion.", ru:"Урядам слід вкладатися в громадський транспорт, щоб зменшити затори.", why:"in order to + інфінітив — класична формула речення-рішення в problem/solution есе."},
-    {src:"Task 2 · Essay", en:"Some parents limit screen time <span class='hl'>so that</span> their children <span class='hl'>can</span> concentrate on schoolwork.", ru:"Деякі батьки обмежують екранний час, щоб діти могли зосередитися на навчанні.", why:"so that + can — мета з іншим підметом; простий to тут неможливий."},
-    {src:"Task 2 · Essay", en:"The curriculum should be designed <span class='hl'>so as not to overload</span> younger pupils.", ru:"Програму слід складати так, щоб не перевантажувати молодших школярів.", why:"so as not to — рідкісна заперечна форма мети, виділяє відповідь."},
-    {src:"Task 1 · Process", en:"The liquid is cooled rapidly <span class='hl'>in order to prevent</span> crystallisation.", ru:"Рідину швидко охолоджують, щоб запобігти кристалізації.", why:"мета етапу процесу — в Task 1 діаграм такі пояснення показують розуміння процесу."}
-  ],
-  exercises:[
-    {
-      type:"choice", title:"Оберіть правильну конструкцію мети",
-      instruction:"Дивіться, що стоїть після зв'язки — інфінітив чи клауза.",
-      items:[
-        {q:"", opts:["The city built bike lanes for to encourage cycling.","The city built bike lanes to encourage cycling.","The city built bike lanes for encourage cycling."], a:1, why:"Просто to + інфінітив; for to — груба помилка."},
-        {q:"У мети інший підмет:", opts:["The school hired counsellors to students could cope with stress.","The school hired counsellors so that students could cope with stress.","The school hired counsellors in order to students cope with stress."], a:1, why:"Різні підмети (school / students) → потрібен so that + клауза з модальним дієсловом."},
-        {q:"Заперечна мета:", opts:["The rules were simplified in order not to confuse applicants.","The rules were simplified in order to not confuse applicants.","The rules were simplified for not to confuse applicants."], a:0, why:"Заперечення ставиться перед to: in order NOT to / so as NOT to."},
-        {q:"Найформальніший варіант:", opts:["More trees were planted to make the air cleaner.","More trees were planted in order to improve air quality.","More trees were planted so the air is cleaner."], a:1, why:"in order to + точна лексика (improve air quality) — формально; so без that і make…cleaner звучать розмовно."}
-      ]
-    },
-    {
-      type:"gap", title:"Вставте зв'язку мети",
-      instruction:"Обирайте з: to, in order to, so as to, so that, in order not to, so as not to, for.",
-      items:[
-        {pre:"Cameras were installed in the city centre ", post:" deter crime.", acc:["to","in order to","so as to"], hint:"далі інфінітив; найформальніший — два слова", why:"in order to + V — формальна мета, типова для теми crime."},
-        {pre:"The course includes practical sessions ", post:" students can apply theory to real cases.", acc:["so that"], hint:"далі ціле речення з підметом students", why:"Інший підмет → so that + can/could."},
-        {pre:"Speed limits were lowered ", post:" reduce the number of accidents.", acc:["to","in order to","so as to"], hint:"інфінітив reduce", why:"Будь-який з інфінітивних варіантів правильний; in order to — найформальніший."},
-        {pre:"The announcement was made quietly ", post:" cause panic among passengers.", acc:["in order not to","so as not to"], hint:"потрібне заперечення: «щоб не»", why:"in order not to / so as not to — заперечення перед інфінітивом."}
-      ]
-    },
-    {
-      type:"transform", title:"Об'єднайте, виразивши мету",
-      instruction:"Поєднайте речення, використовуючи вказану конструкцію.",
-      items:[
-        {src:"The government subsidises electric cars. Its goal is to cut carbon emissions.", task:"Використайте in order to", req:[{any:["in order to"],hint:"in order to"},{any:["cut","reduce"],hint:"інфінітив cut/reduce"}], model:"The government subsidises electric cars in order to cut carbon emissions.", why:"Типова структура речення-рішення в Task 2: захід + in order to + мета."},
-        {src:"Universities should offer more online courses. Then working adults can continue their education.", task:"Використайте so that", req:[{any:["so that"],hint:"so that"},{any:["can","could","will be able"],hint:"модальне дієслово після so that"}], model:"Universities should offer more online courses so that working adults can continue their education.", why:"Підмети різні (universities / adults) → тільки so that."},
-        {src:"The filters remove impurities. Their purpose is to make the water safe to drink.", task:"Використайте to або in order to (контекст — процес, Task 1)", req:[{any:["in order to"," to make"],hint:"to / in order to + make"}], model:"The filters remove impurities (in order) to make the water safe to drink.", why:"Пояснення мети етапу показує екзаменатору, що ви розумієте процес, а не просто перелічуєте кроки."}
-      ]
-    }
-  ],
-  production:[
-    {label:"Task 2 · Problem/Solution", prompt:"Проблема: затори в містах. Запропонуйте захід і його мету одним реченням (in order to / so that).", model:"Cities should introduce congestion charges in order to discourage unnecessary car use. / Metro networks should be expanded so that commuters can reach the centre without driving."},
-    {label:"Task 2 · Заперечна мета", prompt:"Напишіть речення про шкільні іспити з in order not to / so as not to.", model:"Assessment methods should be varied so as not to discourage students who struggle with traditional exams."}
-  ]
-},
-{
-  id:"concession", num:8, en:"Clauses of Concession", ru:"Підрядні речення уступки", tags:["T1","T2"], level:2,
-  theory:
-  "<p>Уступка визнає протилежний факт або аргумент — і одразу його «переважує». Це ядро контраргументації в Task 2 та порівняння даних у Task 1.</p>" +
-  "<div class='formula'>+ клауза: <b>although / even though / though / while / whereas</b><br>" +
-  "+ іменник: <b>despite / in spite of</b> — <b>Despite</b> the high cost, the project continued.<br>" +
-  "прислівник-конектор: <b>however / nevertheless</b> (окреме речення!)</div>" +
-  "<ul>" +
-  "<li><b>Even though</b> сильніше, ніж although — «хоча й», «незважаючи на те що».</li>" +
-  "<li><b>Whereas / while</b> — пряме протиставлення двох фактів: Whereas men spent 45 hours at work, women spent 30. Незамінне в Task 1.</li>" +
-  "<li><b>Despite / in spite of</b> + noun або + the fact that…: despite the rise / despite the fact that prices rose.</li>" +
-  "</ul>" +
-  "<div class='warn'><b>Дві головні помилки:</b> 1) although + but в одному реченні (<s>Although it rained, but we left</s>) — обирайте щось одне. 2) however як сполучник: <s>The cost was high, however the project continued</s> — потрібна крапка з комою: The cost was high; however, the project continued.</div>",
-  examples:[
-    {src:"Task 1 · Comparison", en:"<span class='hl'>Although</span> gas consumption fell, electricity consumption rose steadily over the period.", ru:"Хоча споживання газу знизилося, споживання електроенергії стабільно зростало.", why:"один рядок — одразу два протилежні тренди: це вищий пілотаж порівняння даних."},
-    {src:"Task 1 · Chart", en:"<span class='hl'>Whereas</span> the 25–34 age group dominated online shopping, the over-55s preferred in-store purchases.", ru:"Тоді як група 25–34 домінувала в онлайн-покупках, старше покоління надавало перевагу звичайним магазинам.", why:"whereas — точний інструмент протиставлення двох категорій даних."},
-    {src:"Task 2 · Concession", en:"<span class='hl'>Even though</span> technology connects people across distances, it can paradoxically isolate those who live together.", ru:"Хоча технології з'єднують людей на відстані, вони можуть парадоксально ізолювати тих, хто живе поруч.", why:"уступка + поворот — зразковий абзац контраргументу: визнаємо силу чужої позиції й спростовуємо."},
-    {src:"Task 2 · Essay", en:"<span class='hl'>Despite the considerable cost of</span> space exploration, its scientific benefits are undeniable.", ru:"Незважаючи на значну вартість освоєння космосу, його наукова користь безперечна.", why:"despite + номіналізація — компактна уступка на самому початку аргументу."}
-  ],
-  exercises:[
-    {
-      type:"choice", title:"Оберіть правильний варіант",
-      instruction:"Перевіряйте: клауза чи іменник після зв'язки, зайві сполучники, пунктуацію.",
-      items:[
-        {q:"", opts:["Although the ticket prices were high, but the concerts sold out.","Although the ticket prices were high, the concerts sold out.","Although the ticket prices were high; but the concerts sold out."], a:1, why:"Although і but не поєднуються — це два сполучники для одного зв'язку. Лишаємо тільки although."},
-        {q:"", opts:["Despite the rain, the festival continued.","Despite it rained, the festival continued.","Despite of the rain, the festival continued."], a:0, why:"Despite + іменник, без of (in spite OF, але despite БЕЗ of); перед клаузою — despite the fact that."},
-        {q:"", opts:["The scheme was expensive, however it was highly effective.","The scheme was expensive; however, it was highly effective.","The scheme was expensive however, it was highly effective."], a:1, why:"However — прислівник, а не сполучник: крапка з комою перед ним, кома після."},
-        {q:"Протиставлення даних у Task 1:", opts:["Whereas urban populations grew, rural populations shrank.","Whereas urban populations grew, but rural populations shrank.","Whereas of urban growth, rural populations shrank."], a:0, why:"Whereas + клауза + кома + клауза, без but."}
-      ]
-    },
-    {
-      type:"gap", title:"Вставте зв'язку уступки",
-      instruction:"Обирайте з: although, even though, despite, in spite of, whereas, however.",
-      items:[
-        {pre:"", post:" the widespread availability of free online courses, enrolment in paid programmes keeps growing.", acc:["despite","in spite of"], hint:"далі іменник (availability)", why:"Despite + noun phrase — уступка без повноцінної клаузи."},
-        {pre:"", post:" printed books remain popular, e-books have captured a third of the market.", acc:["whereas","although","while","even though"], hint:"протиставлення двох фактів — «тоді як»", why:"Whereas/Although + клауза; whereas підкреслює прямий контраст."},
-        {pre:"Smoking rates have fallen for decades. ", post:", tobacco companies' profits remain stable.", acc:["however","nevertheless"], hint:"окреме речення, прислівник-конектор", why:"However на початку нового речення після крапки — коректна позиція."},
-        {pre:"", post:" being the most expensive option, rail travel is also the most environmentally friendly. (підказка: зв'язка + V-ing)", acc:["despite","in spite of"], hint:"зв'язка, після якої можлива -ing форма", why:"Despite + being / V-ing — уступка з герундієм, дуже компактна конструкція."}
-      ]
-    },
-    {
-      type:"transform", title:"Об'єднайте через уступку",
-      instruction:"Поєднайте пару речень указаною зв'язкою. Зміст-протиставлення збережіть.",
-      items:[
-        {src:"Online learning is convenient. Many students still prefer face-to-face classes.", task:"Використайте although або even though", req:[{any:["although","even though","though"],hint:"although / even though"}], model:"Although online learning is convenient, many students still prefer face-to-face classes. / Online learning is convenient; however, many students still prefer face-to-face classes.", why:"Уступка на початку речення — готовий каркас для контраргументу в Task 2."},
-        {src:"The new policy was costly. It reduced unemployment by 15%.", task:"Використайте despite + іменник", req:[{any:["despite","in spite of"],hint:"despite / in spite of"},{any:["cost","expense"],hint:"іменник (the cost / its high cost)"}], model:"Despite its high cost, the new policy reduced unemployment by 15%. / In spite of the considerable cost, the new policy reduced unemployment by 15%.", why:"Despite + noun дозволяє запакувати уступку в три слова й одразу дати головну думку."},
-        {src:"In 2000, only 10% of households had broadband. In the same year, 90% owned a mobile phone.", task:"Використайте whereas або while для контрасту", req:[{any:["whereas","while"],hint:"whereas / while"}], model:"In 2000, whereas only 10% of households had broadband, 90% owned a mobile phone. / Whereas only 10% of households had broadband in 2000, 90% owned a mobile phone.", why:"Протиставлення двох показників одним реченням — те, що відрізняє Band 7 від Band 6 у Task 1."}
-      ]
-    }
-  ],
-  production:[
-    {label:"Task 1", prompt:"Дані: продажі книг у магазинах впали з 80 до 45 млн; продажі електронних книг зросли з 5 до 60 млн. Опишіть контраст одним реченням (whereas / although).", model:"Whereas in-store book sales fell from 80 to 45 million, e-book sales rose from 5 to 60 million over the same period."},
-    {label:"Task 2 · Контраргумент", prompt:"Тема: «Чи варто повністю перейти на дистанційне навчання?» Напишіть речення-уступку (визнайте плюс протилежної сторони), а потім поворот до своєї позиції.", model:"Even though distance learning offers unmatched flexibility, it cannot replicate the social interaction that is essential for students' personal development."}
-  ]
-},
-{
-  id:"inversion", num:9, en:"Inversion", ru:"Інверсія для акценту", tags:["T2"], level:3,
-  theory:
-  "<p>Інверсія — зворотний порядок слів (допоміжне дієслово перед підметом) після винесених на початок заперечних або обмежувальних прислівників. Це <b>одна з найрідкісніших структур</b> у письмі кандидатів — і тому потужний маркер Band 8+.</p>" +
-  "<div class='formula'><b>Never / Rarely / Seldom</b> + aux + S + V — <b>Rarely do</b> governments consider…<br>" +
-  "<b>Not only</b> + aux + S + V … <b>but also</b> — <b>Not only does</b> tourism create jobs, <b>but</b> it <b>also</b> promotes exchange.<br>" +
-  "<b>Only when / Only after</b> + клауза, aux + S + V — <b>Only when</b> consumption falls <b>will</b> emissions <b>decrease</b>.<br>" +
-  "<b>Under no circumstances</b> + aux + S + V — <b>Under no circumstances should</b> children be given…<br>" +
-  "<b>Hardly / Scarcely</b> … <b>when</b>; <b>No sooner</b> … <b>than</b></div>" +
-  "<ul>" +
-  "<li>Інверсія відбувається <b>в головній частині</b>, а не в підрядній: Only when the law changes WILL people comply (а не <s>only when will the law change</s>).</li>" +
-  "<li>Якщо в реченні немає допоміжного дієслова — додайте <b>do/does/did</b>: Rarely DO we consider…</li>" +
-  "<li>Однієї-двох інверсій на есе достатньо; більше — забагато.</li>" +
-  "</ul>" +
-  "<div class='warn'><b>Де використовувати:</b> переважно Task 2 — для сильних тез, рекомендацій, висновку. У Task 1 (опис даних) інверсія зазвичай недоречна.</div>",
-  examples:[
-    {src:"Task 2 · Essay", en:"<span class='hl'>Not only does</span> tourism create employment, <span class='hl'>but</span> it <span class='hl'>also</span> promotes cultural exchange.", ru:"Туризм не лише створює робочі місця, а й сприяє культурному обміну.", why:"Not only… but also з інверсією — два аргументи в одній ефектній конструкції."},
-    {src:"Task 2 · Opinion", en:"<span class='hl'>Rarely do</span> policymakers consider the long-term consequences of urban expansion.", ru:"Політики рідко враховують довгострокові наслідки зростання міст.", why:"Rarely + do + subject — критика звучить сильніше й формальніше."},
-    {src:"Task 2 · Conclusion", en:"<span class='hl'>Only when</span> governments, businesses and citizens act together <span class='hl'>will</span> climate change <span class='hl'>be</span> reversed.", ru:"Лише коли уряди, бізнес і громадяни діятимуть разом, зміну клімату можна буде повернути.", why:"ідеальна формула сильного висновку: умова + інвертований результат."},
-    {src:"Task 2 · Recommendation", en:"<span class='hl'>Under no circumstances should</span> children under thirteen be given unrestricted access to social media.", ru:"Ні в якому разі дітям до тринадцяти не можна давати необмежений доступ до соцмереж.", why:"Under no circumstances + should — категорична рекомендація, найвищий рівень формальності."}
-  ],
-  exercises:[
-    {
-      type:"choice", title:"Оберіть речення з правильною інверсією",
-      instruction:"Перевіряйте порядок слів: aux + підмет + смислове дієслово — і де саме відбувається інверсія.",
-      items:[
-        {q:"", opts:["Not only exercise improves health, but it also reduces stress.","Not only does exercise improve health, but it also reduces stress.","Not only improves exercise health, but it also reduces stress."], a:1, why:"Немає допоміжного → додаємо does; смислове дієслово повертається до інфінітива: does…improve."},
-        {q:"", opts:["Only when the law is enforced, people will comply.","Only when will the law be enforced, people will comply.","Only when the law is enforced will people comply."], a:2, why:"Інверсія — в головній частині (will people comply); у підрядній після only when порядок прямий, і кома після підрядної."},
-        {q:"", opts:["Under no circumstances personal data should be shared.","Under no circumstances should personal data be shared.","Under no circumstances should be personal data shared."], a:1, why:"Under no circumstances + should + S (personal data) + be shared."},
-        {q:"", opts:["No sooner had the measure been introduced than prices stabilised.","No sooner the measure had been introduced than prices stabilised.","No sooner had the measure been introduced when prices stabilised."], a:0, why:"No sooner + Past Perfect (had + S + V3) … than. Пара до scarcely/hardly…when."}
-      ]
-    },
-    {
-      type:"gap", title:"Добудуйте інверсію",
-      instruction:"Впишіть бракуюче допоміжне дієслово або слово зв'язки.",
-      items:[
-        {pre:"Rarely ", post:" such an opportunity arise in a person's lifetime. (впишіть допоміжне дієслово)", acc:["does"], hint:"підмет opportunity — 3-тя особа однини, теперішній час", why:"Rarely + does + S + V (інфінітив arise)."},
-        {pre:"Not only ", post:" renewable energy reduce emissions, but it also creates jobs.", acc:["does"], hint:"допоміжне дієслово для 3-ї особи", why:"Not only does + S + V … but … also."},
-        {pre:"Only by working together ", post:" we overcome global challenges.", acc:["can","will"], hint:"модальне дієслово перед підметом we", why:"Only by… + can/will + S + V — інверсія в головній частині."},
-        {pre:"Hardly had the results been published ", post:" the debate began.", acc:["when"], hint:"парний сполучник до hardly/scarcely", why:"Hardly/Scarcely + had + S + V3 … when. (No sooner…than — не переплутайте!)"}
-      ]
-    },
-    {
-      type:"transform", title:"Перепишіть з інверсією",
-      instruction:"Збережіть зміст, посильте акцент указаною конструкцією.",
-      items:[
-        {src:"Public libraries are valuable not just as sources of books, but also as community centres.", task:"Почніть з Not only…", req:[{any:["not only"],hint:"Not only на початку"},{any:["are","do"],hint:"інверсія: допоміжне дієслово перед підметом (not only are libraries…)"},{any:["but also","but they are also","but"],hint:"друга частина — but (also)"}], model:"Not only are public libraries valuable sources of books, but they are also community centres. / Not only do public libraries provide books, but they also serve as community centres.", why:"Not only + інверсія — і два аргументи, і рідкісна структура водночас."},
-        {src:"We will not solve the housing crisis until the government changes its policy.", task:"Почніть з Not until…", req:[{any:["not until"],hint:"Not until на початку"},{any:["will"],hint:"інверсія з will у головній частині"}], model:"Not until the government changes its policy will we solve the housing crisis. / Not until the policy changes will the housing crisis be solved.", why:"Not until + клауза (прямий порядок!), потім will + S + V."},
-        {src:"Voting should never be made compulsory.", task:"Почніть з Under no circumstances…", req:[{any:["under no circumstances"],hint:"Under no circumstances"},{any:["should"],hint:"should перед підметом"}], model:"Under no circumstances should voting be made compulsory.", why:"Готова формула категоричної відмови — запам'ятайте її цілком."}
-      ]
-    }
-  ],
-  production:[
-    {label:"Task 2 · Сильна теза", prompt:"Тема: «Важливість мистецтва в шкільній програмі». Напишіть речення з Not only… but also.", model:"Not only does art education develop creativity, but it also improves academic performance in other subjects."},
-    {label:"Task 2 · Висновок", prompt:"Напишіть фінальне речення есе про екологію з Only when / Only if + інверсія.", model:"Only when economic growth is decoupled from environmental damage will true sustainability be achieved."}
-  ]
-},
-{
-  id:"cleft", num:10, en:"Cleft Sentences", ru:"Розчленовані речення", tags:["T2"], level:3,
-  theory:
-  "<p>Розчленоване речення «розрізає» просту думку на дві частини, щоб <b>поставити у фокус</b> найважливіше. Це інструмент емфази — ви керуєте увагою читача.</p>" +
-  "<div class='formula'><b>It is/was … that/who …</b> — <b>It is</b> education <b>that</b> drives progress.<br>" +
-  "<b>What … is/was …</b> — <b>What</b> drives progress <b>is</b> education.<br>" +
-  "<b>What + S + V + is/was + to-inf / noun</b> — What governments should do <b>is invest</b> in schools.<br>" +
-  "<b>The reason (why) … is that …</b> · <b>The place/person/thing …</b></div>" +
-  "<ul>" +
-  "<li><b>It-cleft</b> виділяє один елемент: It was the 1990s that saw the steepest rise (не технології, не політика — саме 1990-ті).</li>" +
-  "<li><b>Wh-cleft (pseudo-cleft)</b> з What — улюблена структура для вступів і висновків: What matters most is… / What concerns me is…</li>" +
-  "<li>Інформація після is/that — <b>нова й головна</b>; решта сприймається як тло.</li>" +
-  "</ul>" +
-  "<div class='warn'><b>Не зловживайте:</b> одне розчленоване речення на есе справляє враження; три — дратують. І стежте за that/who: для людей — who, для решти — that (which у cleft не використовується).</div>",
-  examples:[
-    {src:"Task 2 · Opinion", en:"<span class='hl'>It is</span> early childhood education <span class='hl'>that</span> has the greatest long-term impact on a person's life.", ru:"Саме дошкільна освіта має найбільший довгостроковий вплив на життя людини.", why:"It-cleft виділяє один пріоритет із багатьох — сильна теза."},
-    {src:"Task 2 · Essay", en:"<span class='hl'>What</span> governments often overlook <span class='hl'>is</span> the role of public transport in reducing inequality.", ru:"Те, що уряди часто випускають з уваги, — це роль громадського транспорту у зменшенні нерівності.", why:"What-cleft створює інтригу: спочатку «щось випускають», потім — що саме."},
-    {src:"Task 2 · Conclusion", en:"<span class='hl'>What</span> societies should invest in <span class='hl'>is</span> not stricter punishment but better rehabilitation.", ru:"У що суспільствам слід інвестувати — не в суворіші покарання, а в кращу реабілітацію.", why:"What…is not X but Y — ефектна формула для висновку з протиставленням."},
-    {src:"Task 1 · Graph (рідко, але ефектно)", en:"<span class='hl'>It was in 2008 that</span> sales reached their highest point.", ru:"Саме в 2008 році продажі досягли піку.", why:"It was…that виділяє ключовий рік на графіку — доречно один раз в огляді."}
-  ],
-  exercises:[
-    {
-      type:"choice", title:"Оберіть коректне розчленоване речення",
-      instruction:"Перевіряйте сполучне слово (that/who, не which!) та узгодження.",
-      items:[
-        {q:"", opts:["It is the younger generation which drives technological change.","It is the younger generation that drives technological change.","It is the younger generation what drives technological change."], a:1, why:"У cleft-конструкції використовується that (для людей можливо who); which і what тут неможливі."},
-        {q:"", opts:["What concerns most parents it is screen time.","What concerns most parents is screen time.","What concerns most parents, it is screen time."], a:1, why:"What-клауза + is + фокус, без зайвого it і без коми."},
-        {q:"", opts:["What the city needs are more affordable houses.","What the city needs is more affordable housing.","What the city needs it is more affordable housing."], a:1, why:"Після what-cleft традиційно is (housing тут незлічуваний, тож однозначно is); зайве it неприпустиме."},
-        {q:"", opts:["It was after the war when the district was rebuilt.","It was after the war that the district was rebuilt.","It was after the war, that the district was rebuilt."], a:1, why:"It was…that, без коми й без when — that універсальний навіть для часу."}
-      ]
-    },
-    {
-      type:"gap", title:"Вставте It / What / that / is / was",
-      instruction:"Відновіть розчленовану конструкцію.",
-      items:[
-        {pre:"", post:" is the lack of funding that prevents schools from hiring enough teachers.", acc:["it"], hint:"It-cleft: __ is the lack of funding that…", why:"It is … that … — фокус на the lack of funding."},
-        {pre:"What makes this trend worrying ", post:" its effect on children's attention spans.", acc:["is"], hint:"What… + дієслово-зв'язка", why:"What-cleft: What … is …"},
-        {pre:"It was the invention of the smartphone ", post:" transformed how people consume news.", acc:["that"], hint:"сполучне слово після It was…", why:"It was … that … — не when, не which."},
-        {pre:"", post:" the report emphasises is the need for immediate action.", acc:["what"], hint:"Wh-cleft на початку речення", why:"What the report emphasises is… — фокус на головній рекомендації."}
-      ]
-    },
-    {
-      type:"transform", title:"Поставте елемент у фокус",
-      instruction:"Перепишіть речення як cleft, виділивши вказану в завданні частину.",
-      items:[
-        {src:"Social media has changed political campaigns more than anything else.", task:"Фокус — social media; використайте It is…that", req:[{any:["it is"],hint:"It is на початку"},{any:["that"],hint:"that після фокусу"}], model:"It is social media that has changed political campaigns more than anything else.", why:"It-cleft каже: змінили кампанії не гроші й не телебачення, а саме соцмережі."},
-        {src:"Governments should invest in teacher training, not in new buildings.", task:"Використайте What…is… not…but…", req:[{any:["what"],hint:"What на початку"},{any:["is"],hint:"is після what-клаузи"}], model:"What governments should invest in is teacher training, not new buildings. / What governments should do is invest in teacher training rather than new buildings.", why:"What…is… — класична рамка для рекомендації з протиставленням."},
-        {src:"The main reason for the decline in reading is the competition from digital entertainment.", task:"Фокус — the competition from digital entertainment; почніть з It is", req:[{any:["it is"],hint:"It is"},{any:["that"],hint:"that"}], model:"It is the competition from digital entertainment that is the main reason for the decline in reading.", why:"Cleft дозволяє перевернути нудне «the reason is» на акцентоване твердження."}
-      ]
-    }
-  ],
-  production:[
-    {label:"Task 2 · Вступ", prompt:"Напишіть перше речення есе про важливість іноземних мов з What…is…", model:"What makes foreign language skills indispensable today is the global nature of the modern job market."},
-    {label:"Task 2 · Аргумент", prompt:"Тема: «Хто відповідає за екологію — люди чи корпорації?» Виділіть винуватця з It is…that…", model:"It is large corporations, rather than individual consumers, that bear the greatest responsibility for environmental protection."}
-  ]
-},
-{
-  id:"conditionals", num:11, en:"Mixed Conditionals", ru:"Змішані умовні речення", tags:["T2"], level:3,
-  theory:
-  "<p>Змішані умовні поєднують <b>різні часи</b> в одній гіпотезі: умова з минулого впливає на теперішнє — або навпаки. У Task 2 це інструмент для оцінки альтернатив і наслідків.</p>" +
-  "<div class='formula'><b>Минуле → теперішнє:</b> If + Past Perfect, … would + V —<br>If governments <b>had invested</b> in railways, congestion <b>would be</b> lower today.<br><br>" +
-  "<b>Теперішнє → минуле:</b> If + Past Simple, … would have + V3 —<br>If I <b>lived</b> near my office, I <b>would not have spent</b> so much time commuting.</div>" +
-  "<ul>" +
-  "<li><b>Минуле→теперішнє</b> — найкорисніший тип для есе: «якби тоді зробили X, зараз не було б Y». Ідеальний для problem/solution та оцінки рішень.</li>" +
-  "<li>Сигнальні слова-якорі: <b>today / now / these days</b> у головній частині показують, що результат стосується теперішнього.</li>" +
-  "<li>Обидві частини можна міняти місцями без коми: Congestion would be lower today if governments had invested in railways.</li>" +
-  "</ul>" +
-  "<div class='warn'><b>Типові помилки:</b> 1) would в if-клаузі: <s>If governments would have invested…</s> — не можна! 2) змішання без якоря часу — читач не розуміє, про який час йдеться. Завжди додавайте today/now або минулу дату.</div>",
-  examples:[
-    {src:"Task 2 · Problem/Solution", en:"If stricter emissions laws <span class='hl'>had been introduced</span> a decade ago, air quality in major cities <span class='hl'>would be</span> significantly better <span class='hl'>today</span>.", ru:"Якби десять років тому запровадили суворіші закони про викиди, якість повітря у великих містах сьогодні була б значно кращою.", why:"минула умова + теперішній результат — оцінка втраченої можливості, сильний хід у problem/solution есе."},
-    {src:"Task 2 · Opinion", en:"If young people <span class='hl'>were</span> more politically engaged, recent election results <span class='hl'>would have been</span> very different.", ru:"Якби молодь була політично активнішою, результати нещодавніх виборів були б іншими.", why:"теперішня умова + минулий результат — гіпотеза про «що було б»."},
-    {src:"Task 2 · Discussion", en:"Had schools <span class='hl'>taught</span> financial literacy earlier, fewer adults <span class='hl'>would struggle</span> with debt now.", ru:"Якби школи раніше вчили фінансової грамотності, менше дорослих зараз боролися б з боргами.", why:"Had + S + V3 — інвертована форма if-клаузи, найвищий рівень (поєднує змішаний кондиціонал з інверсією!)."},
-    {src:"Task 2 · Hypothesis", en:"If remote work <span class='hl'>had not become</span> widespread during the pandemic, city centres <span class='hl'>would look</span> exactly as they did twenty years ago.", ru:"Якби віддалена робота не поширилася під час пандемії, центри міст виглядали б як двадцять років тому.", why:"заперечна минула умова показує значущість реальної події."}
-  ],
-  exercises:[
-    {
-      type:"choice", title:"Оберіть коректний змішаний кондиціонал",
-      instruction:"Дивіться на якір часу (today, now, ten years ago) — він підказує тип змішання.",
-      items:[
-        {q:"Результат — зараз:", opts:["If the council had built the metro line, traffic would have been better today.","If the council had built the metro line, traffic would be better today.","If the council would have built the metro line, traffic would be better today."], a:1, why:"Минула умова (had built) + теперішній результат (would be … today). Would have been стосувався б минулого результату."},
-        {q:"", opts:["If I knew the answer yesterday, I would have told you.","If I had known the answer yesterday, I would tell you.","If I had known the answer yesterday, I would have told you."], a:2, why:"Тут обидва часи минулі — це звичайний 3-й тип. Змішаний варіант був би: …I would know it now."},
-        {q:"", opts:["If public transport were cheaper, fewer people would have bought cars last year.","If public transport had been cheaper, fewer people would buy cars last year.","If public transport would be cheaper, fewer people would have bought cars last year."], a:0, why:"Теперішня умова (were cheaper — взагалі) + минулий результат (would have bought … last year)."},
-        {q:"Інвертована форма:", opts:["Had the government acted sooner, the crisis would have been less severe.","Had the government acted sooner, the crisis would be less severe now.","Had the government acted sooner the crisis would be less severe now."], a:1, why:"Had + S + V3 замінює if; результат із now — змішаний тип; кома після інвертованої if-клаузи обов'язкова."}
-      ]
-    },
-    {
-      type:"gap", title:"Вставте дієслово в правильній формі",
-      instruction:"Визначте за якорем часу, який тип змішання потрібен.",
-      items:[
-        {pre:"If the company ", post:" (invest) in staff training five years ago, it would not be struggling with high turnover now.", acc:["had invested"], hint:"умова в минулому (five years ago) — Past Perfect", why:"If + Past Perfect … would + V now — минула умова, теперішній результат."},
-        {pre:"If people ", post:" (be) more willing to share cars, the traffic jams of the last decade would have been much less severe.", acc:["were"], hint:"умова — загальна, про теперішній характер людей — Past Simple", why:"If + Past Simple … would have + V3 — теперішня умова, минулий результат."},
-        {pre:"If governments had listened to scientists in the 1990s, global temperatures ", post:" (be) lower today.", acc:["would be"], hint:"результат today — would + інфінітив", why:"would be today — теперішній результат від минулої умови."},
-        {pre:"", post:" (have) the railway been privatised, ticket prices would probably be even higher now. — інверсія", acc:["had"], hint:"інвертована if-клауза: __ + S + V3", why:"Had the railway been privatised = If it had been privatised — дві високобальні структури в одному реченні."}
-      ]
-    },
-    {
-      type:"transform", title:"Побудуйте гіпотезу зі змішаним кондиціоналом",
-      instruction:"Перетворіть факт на «альтернативну історію» за вказаною схемою.",
-      items:[
-        {src:"Fact: The city did not invest in cycle lanes. Now commuters drive everywhere.", task:"Схема: минула умова → теперішній результат (If…had…, …would… now/today)", req:[{any:["had invested","had built"],hint:"Past Perfect в if-клаузі (had invested / had built)"},{any:["would"],hint:"would + інфінітив у головній частині"},{any:["now","today","currently"],hint:"якір теперішнього часу (now / today)"}], model:"If the city had invested in cycle lanes, commuters would not drive everywhere today. / Had the city invested in cycle lanes, fewer commuters would drive now.", why:"Якір today/now обов'язковий — без нього речення читається як звичайний 3-й тип."},
-        {src:"Fact: Young people do not read newspapers. That is why they missed the election debate last month.", task:"Схема: теперішня умова → минулий результат (If…were/did…, …would have…)", req:[{any:["if"],hint:"if-клауза"},{any:["would have"],hint:"would have + V3"}], model:"If young people read newspapers, they would not have missed the election debate last month. / If young people were newspaper readers, they would have followed the debate.", why:"Past Simple в умові (read = взагалі) + would have + V3 для минулої події."},
-        {src:"Fact: Nobody regulated social media algorithms in the 2010s. Teenagers' attention spans are suffering now.", task:"Схема: минула умова → теперішній результат; почніть з If", req:[{any:["had regulated","had been regulated"],hint:"Past Perfect (актив або пасив)"},{any:["would"],hint:"would + V"},{any:["now","today","currently"],hint:"якір теперішнього"}], model:"If social media algorithms had been regulated in the 2010s, teenagers' attention spans would not be suffering now. / If regulators had acted earlier, the situation would be better today.", why:"Змішаний кондиціонал + пасив + номіналізація — комбінація структур, яку екзаменатор помічає одразу."}
-      ]
-    }
-  ],
-  production:[
-    {label:"Task 2 · Оцінка рішення", prompt:"Тема: «Місто N побудувало платні дороги, і затори зникли». Напишіть гіпотезу: що було б зараз, якби їх не побудували.", model:"If the city had not introduced toll roads, congestion would be as severe today as it was twenty years ago."},
-    {label:"Task 2 · Аргумент", prompt:"Тема: «Чи варто вивчати історію в школі?» Напишіть змішаний кондиціонал на підтримку своєї позиції.", model:"If schools did not teach history, societies would have repeated the same mistakes in every generation."}
-  ]
-}
-];
-
-/* ============================================================
-   EXAM SIMULATION — mixed review (30 завдань)
-   ============================================================ */
-const EXAM = {
-  exercises:[
-    {
-      type:"choice", title:"Частина 1. Оберіть найсильніше речення",
-      instruction:"У кожному рядку лише один варіант без помилки та на рівні Band 7+. Решта містять типові помилки кандидатів.",
-      items:[
-        {q:"Опис тренда (Task 1):", opts:["The number of users grew rapidly, reached 2 million in 2020.","The number of users grew rapidly, reaching 2 million in 2020.","Having grew rapidly, the number of users reached 2 million in 2020."], a:1, why:"Дієприкметниковий зворот reaching… ; reached без сполучника і having grew — помилки форми."},
-        {q:"Контраргумент (Task 2):", opts:["Although online education is flexible, but it lacks personal contact.","Despite online education is flexible, it lacks personal contact.","Although online education is flexible, it lacks personal contact."], a:2, why:"Although без but; despite вимагає іменника, а не клаузи."},
-        {q:"Сильний висновок (Task 2):", opts:["Only if all countries cooperate, climate change can be slowed.","Only if all countries cooperate can climate change be slowed.","Only if all countries will cooperate can climate change be slowed."], a:1, why:"Інверсія в головній частині (can climate change be slowed); в if-клаузі прямий порядок і жодного will."},
-        {q:"Причина (Task 1):", opts:["Due to demand for coal fell, prices dropped.","Because of a fall in demand for coal, prices dropped.","Because of demand for coal fell, prices dropped."], a:1, why:"Because of + номіналізація (a fall in demand); клауза після because of/due to неможлива."},
-        {q:"Опис процесу (Task 1):", opts:["The grapes are harvested by hand and then pressed.","The grapes are harvest by hand and then pressed.","The grapes harvest by hand and then are pressing."], a:0, why:"Present Simple Passive: are harvested / (are) pressed. Harvest і pressing — помилки форми пасиву."},
-        {q:"Найакадемічніший опис падіння (Task 1):", opts:["Car use went down slowly over the decade.","There was a gradual decline in car use over the decade.","Car use was declining, which was gradual."], a:1, why:"Номіналізація a gradual decline + in — маркер академічного стилю."},
-        {q:"Етапи процесу (Task 1):", opts:["Once the mixture has cooled, it is poured into moulds.","Once the mixture will cool, it is poured into moulds.","Once the mixture has cooled it is poured, into moulds."], a:0, why:"Once + Present Perfect; will після once заборонений; кома — лише після всього підрядного."},
-        {q:"Мета (Task 2):", opts:["The hours were extended for to help working students.","The library hours were extended so that working students could study in the evening.","The library hours were extended in order to students study in the evening."], a:1, why:"Інший підмет у мети (students) → so that + could; for to і in order to + клауза — помилки."},
-        {q:"Розчленоване речення (Task 2):", opts:["What young people value most it is job security.","What young people value most is job security.","What young people value most, that is job security."], a:1, why:"What-клауза + is + фокус — без зайвого it і без that is."},
-        {q:"Акцент (Task 2):", opts:["Seldom a policy has such an immediate effect.","Seldom has a policy such an immediate effect.","Seldom has a policy had such an immediate effect."], a:2, why:"Seldom + has + S + V3 (Present Perfect із інверсією): seldom has a policy had…"}
-      ]
-    },
-    {
-      type:"gap", title:"Частина 2. Вставте потрібну форму або зв'язку",
-      instruction:"Тут змішані всі теми курсу — згадайте формули з модулів.",
-      items:[
-        {pre:"The farmland ", post:" (transform) into a residential area between 2000 and 2020. — карта, Task 1", acc:["was transformed"], hint:"зміна завершилася до 2020 — Past Simple Passive", why:"was/were + V3 для карт із датами в минулому (модуль 2)."},
-        {pre:"The government cut fuel taxes, ", post:" (reduce) the cost of commuting almost immediately. — thereby / дієприкметник", acc:["thereby reducing","reducing"], hint:"thereby + V-ing або просто дієприкметниковий зворот", why:"Thereby reducing… — зв'язка результату (модуль 6) + дієприкметник (модуль 1)."},
-        {pre:"If the tax on sugar ", post:" (introduce) earlier, obesity rates would be lower today.", acc:["had been introduced"], hint:"умова в минулому + пасив; результат — today", why:"If + Past Perfect Passive … would be today — змішаний кондиціонал (модуль 11)."},
-        {pre:"The number of applicants rose sharply, ", post:" (exceed) all official forecasts. — дієприкметниковий зворот", acc:["exceeding"], hint:"результат дії — форма -ing", why:"Кома + exceeding… — класичний зворот результату в Task 1 (модуль 1)."},
-        {pre:"By 2015, the old factory ", post:" (turn) into loft apartments. — карта", acc:["had been turned","was turned"], hint:"зміна до моменту в минулому — Past Perfect / Past Simple Passive", why:"By + дата в минулому → had been + V3 (модулі 2 і 4)."},
-        {pre:"There was a steady ", post:" in the number of hospital visits over the period. (grow → іменник)", acc:["growth"], hint:"grow → іменник на -th", why:"Номіналізація: a steady growth in… (модуль 3)."},
-        {pre:"", post:" to the lack of rainfall, the harvest was significantly smaller than expected.", acc:["due","owing"], hint:"двослівна зв'язка причини + іменник", why:"Due to / Owing to + noun phrase (модуль 5)."},
-        {pre:"", post:" the mounting evidence, the regulation was never introduced.", acc:["despite","in spite of"], hint:"зв'язка уступки перед іменником", why:"Despite + noun phrase, без of і без клаузи (модуль 8)."},
-        {pre:"Not only ", post:" the scheme create jobs, but it also cut costs.", acc:["did"], hint:"допоміжне дієслово для минулого часу", why:"Not only + did + S + V (інфінітив create) — інверсія (модуль 9)."},
-        {pre:"", post:" was the high cost that concerned the critics most.", acc:["it"], hint:"It-cleft: __ was the high cost that…", why:"It was … that … — фокус на the high cost (модуль 10)."}
-      ]
-    },
-    {
-      type:"transform", title:"Частина 3. Перепишіть, піднявши рівень речення",
-      instruction:"Підказок щодо структури більше немає — обирайте самі. Перевірка розпізнає кілька правильних варіантів.",
-      items:[
-        {src:"The price of electricity went up. At the same time, the price of gas fell.", task:"Одне речення з контрастом (Task 1)", req:[{any:["whereas","while","although","even though","however"],hint:"зв'язка контрасту (whereas / while / although / however)"}], model:"Whereas the price of electricity went up, the price of gas fell. / The price of electricity went up; however, the price of gas fell. / There was a rise in the price of electricity, whereas gas became cheaper.", why:"Підходять whereas/while/although або крапка з комою + however — головне, не змішати їх."},
-        {src:"People say that working from home makes employees less productive. I do not fully agree.", task:"Сформулюйте чужу позицію формально, потім уступку", req:[{any:["it is","it is often claimed","it is believed","it is argued","it is often argued"],hint:"безособова конструкція It is claimed/believed/argued that"}], model:"It is often claimed that working from home makes employees less productive; however, this view overlooks the benefits of flexible schedules. / Although it is widely believed that remote work reduces productivity, the evidence is mixed.", why:"It is believed that + уступка — зразковий початок абзацу контраргументу."},
-        {src:"The government built new hospitals. This improved healthcare in rural areas.", task:"Одне речення рівня Band 8 — використайте будь-які дві структури курсу", req:[{any:["which","thereby","therefore","consequently","not only","what","it is"],hint:"складну зв'язку (thereby V-ing / which / конектор результату)"}], model:"The government built new hospitals, thereby improving healthcare in rural areas. / It was the construction of new hospitals that improved rural healthcare. / Not only did the government build new hospitals, but it also improved healthcare in rural areas. / There was an improvement in rural healthcare as a result of the construction of new hospitals.", why:"Варіантів багато: thereby + V-ing, It-cleft, Not only-інверсія, номіналізація — будь-які дві структури дають ефект."},
-        {src:"Sales increased steadily for five years. Then they stabilised at a high level.", task:"Одне речення, почніть з дієприкметникового звороту або Having + V3", req:[{any:["having increased","having risen","having grown","increasing","rising","growing"],hint:"дієприкметник (increasing / having increased)"}], model:"Having increased steadily for five years, sales stabilised at a high level. / Sales increased steadily for five years, eventually stabilising at a high level.", why:"Having + V3 або -ing зворот поєднують тренд і результат без повторення підмета (модуль 1)."},
-        {src:"The council demolished the old cinema and built a conference centre on the site.", task:"Опишіть зміну на карті, почніть з The old cinema…", req:[{any:["was demolished"],hint:"Past Simple Passive: was demolished"},{any:["was built","replaced","was replaced"],hint:"пасив другої дії (was built / was replaced by)"}], model:"The old cinema was demolished and (was) replaced by a conference centre. / The old cinema was demolished, and a conference centre was built on the site.", why:"Два пасиви в одному реченні — стандарт опису карт «до/після» (модуль 2)."},
-        {src:"Unemployment rose sharply during the recession.", task:"Перепишіть академічно, почніть з There was…", req:[{any:["there was"],hint:"There was a…"},{any:["rise","increase","growth"],hint:"іменник (a sharp rise / increase)"}], model:"There was a sharp rise in unemployment during the recession. / The recession saw a sharp increase in unemployment.", why:"There was a + adjective + noun + in — шаблон номіналізації для Task 1 (модуль 3)."},
-        {src:"Exports fell because the national currency strengthened.", task:"Одне речення з because of / due to + іменник", req:[{any:["because of","due to","owing to"],hint:"because of / due to"},{any:["strengthening","strength"],hint:"іменник (the strengthening of…)"}], model:"Exports fell because of the strengthening of the national currency. / Due to a stronger national currency, exports fell.", why:"Причина через номіналізацію — поєднання модулів 3 і 5."},
-        {src:"The law was passed. Its aim was to protect minors online.", task:"Одне речення з конструкцією мети", req:[{any:["in order to","so as to"," to protect","so that"],hint:"in order to / so that + мета"}], model:"The law was passed in order to protect minors online. / The law was passed so that minors would be protected online.", why:"Захід + in order to + мета — речення-рішення для Task 2 (модуль 7)."},
-        {src:"The cost of the project concerns the public most of all.", task:"Поставте the cost у фокус (What… або It is…)", req:[{any:["what","it is"],hint:"What-cleft або It-cleft"},{any:["is","that"],hint:"is / that після фокусу"}], model:"What concerns the public most is the cost of the project. / It is the cost of the project that concerns the public most.", why:"Обидві cleft-конструкції ставлять головне слово у фокус (модуль 10)."},
-        {src:"The city did not build the metro twenty years ago. Traffic is terrible now.", task:"Одна гіпотеза зі змішаним кондиціоналом", req:[{any:["had built","had the city built"],hint:"Past Perfect в умові (had built)"},{any:["would"],hint:"would + інфінітив у результаті"},{any:["now","today","currently"],hint:"якір теперішнього (now / today)"}], model:"If the city had built the metro twenty years ago, traffic would not be so terrible now. / Had the city built the metro, traffic would be far better today.", why:"Минула умова → теперішній результат; якір now/today обов'язковий (модуль 11)."}
-      ]
-    }
-  ]
+const DATA = {
+t1: [
+{s:"Prices rose sharply in 2010.",
+ hint:"rise → a rise",
+ model:"There was a <b>sharp rise</b> in prices in 2010.",
+ alt:"2010 saw a sharp rise in prices.",
+ note:"Шаблон <b>There was a + прикметник + іменник + in</b> — найнадійніший для опису трендів у Task 1."},
+{s:"The number of tourists increased steadily between 2000 and 2010.",
+ hint:"increase → an increase",
+ model:"There was a <b>steady increase</b> in the number of tourists between 2000 and 2010.",
+ alt:"The number of tourists experienced a steady increase between 2000 and 2010.",
+ note:"Зверни увагу на артикль: <b>an increase</b>, бо steady increase починається з приголосного — a steady increase, але an increase окремо."},
+{s:"Water consumption fell dramatically after 2015.",
+ hint:"fall → a fall",
+ model:"There was a <b>dramatic fall</b> in water consumption after 2015.",
+ alt:"After 2015, water consumption saw a dramatic fall.",
+ note:"Fall і decrease взаємозамінні: <b>a dramatic fall / a dramatic decrease</b>. Обидва — Band 7+."},
+{s:"The figure fluctuated slightly throughout the period.",
+ hint:"fluctuate → fluctuations",
+ model:"The figure showed <b>slight fluctuations</b> throughout the period.",
+ alt:"There were slight fluctuations in the figure throughout the period.",
+ note:"Fluctuation зазвичай вживається у множині: <b>fluctuations</b>. Вітальне дієслово — <b>show / experience</b>."},
+{s:"Car ownership grew rapidly, so the roads became more congested.",
+ hint:"grow → growth, congested → congestion",
+ model:"The <b>rapid growth</b> in car ownership led to increased <b>road congestion</b>.",
+ alt:"The rapid growth in car ownership resulted in greater road congestion.",
+ note:"Тут номіналізація з'єднує два речення в одне через <b>led to / resulted in</b> — це виглядає набагато академічніше, ніж so."},
+{s:"The factory reduced emissions, so air quality improved.",
+ hint:"reduce → a reduction, improve → an improvement",
+ model:"The <b>reduction</b> in emissions from the factory resulted in an <b>improvement</b> in air quality.",
+ alt:"The factory's reduction in emissions led to an improvement in air quality.",
+ note:"Подвійна номіналізація допустима, коли два процеси пов'язані причинно: <b>reduction → improvement</b>."},
+{s:"Unemployment peaked in 2009 and then declined gradually.",
+ hint:"peak → a peak, decline → a decline",
+ model:"Unemployment reached <b>a peak</b> in 2009, followed by <b>a gradual decline</b>.",
+ alt:"Unemployment reached a peak in 2009 and then experienced a gradual decline.",
+ note:"Конструкція <b>reached a peak, followed by…</b> — класика Task 1 для опису вершини графіка."},
+{s:"Online sales grew, while in-store sales declined over the decade.",
+ hint:"grow → growth, decline → a decline",
+ model:"There was <b>growth</b> in online sales, accompanied by <b>a decline</b> in in-store sales over the decade.",
+ alt:"The decade saw growth in online sales alongside a decline in in-store sales.",
+ note:"<b>Accompanied by</b> — елегантний спосіб показати два паралельні тренди в одному реченні."}
+],
+t2: [
+{s:"When people work from home, they save time on commuting.",
+ hint:"work → working / remote work, save → savings",
+ model:"<b>Remote work</b> leads to significant <b>savings</b> in commuting time.",
+ alt:"Working from home results in considerable savings in commuting time.",
+ note:"Замість кліше when…, підметом стає сам процес: <b>Remote work leads to…</b>."},
+{s:"If children use smartphones too early, their attention gets worse.",
+ hint:"use → use, worse → deterioration",
+ model:"Early smartphone <b>use</b> can lead to <b>a deterioration</b> in children's attention spans.",
+ alt:"The early use of smartphones may result in a deterioration of children's attention.",
+ note:"Gets worse — розмовне. Академічний відповідник: <b>a deterioration in</b>."},
+{s:"Governments invest in public transport, so congestion is reduced.",
+ hint:"invest → investment, reduced → a reduction",
+ model:"Government <b>investment</b> in public transport results in <b>a reduction</b> in congestion.",
+ alt:"Investment in public transport by governments leads to a reduction in congestion.",
+ note:"Зв'язка <b>investment in X → reduction in Y</b> — готова формула для есеїв про транспорт і інфраструктуру."},
+{s:"People live longer now, so healthcare systems are under pressure.",
+ hint:"live longer → increase in life expectancy",
+ model:"The <b>increase</b> in life expectancy has placed healthcare systems under considerable pressure.",
+ alt:"Rising life expectancy has put considerable pressure on healthcare systems.",
+ note:"Live longer → <b>increase in life expectancy</b>. Це типовий приклад, де номіналізація вимагає перефразувати цілу фразу, а не одне слово."},
+{s:"Many young people cannot afford housing because prices have risen quickly.",
+ hint:"risen → rise",
+ model:"The <b>rapid rise</b> in housing prices has made home ownership unaffordable for many young people.",
+ alt:"Due to the rapid rise in housing prices, home ownership has become unaffordable for many young people.",
+ note:"Причину (because…) можна вбудувати в підмет: <b>The rapid rise… has made…</b>."},
+{s:"Technology develops very quickly, so workers must constantly update their skills.",
+ hint:"develops → development",
+ model:"The <b>rapid development</b> of technology has created a constant need for workers to update their skills.",
+ alt:"Rapid technological development requires workers to constantly update their skills.",
+ note:"<b>Has created a need for…</b> — сильна конструкція для есеїв про технології та освіту."},
+{s:"Schools should teach financial skills because this reduces debt problems in adulthood.",
+ hint:"teach → teaching, reduces → a reduction",
+ model:"The <b>teaching</b> of financial skills at school leads to <b>a reduction</b> in debt problems in adulthood.",
+ alt:"Teaching financial skills at school results in a reduction in debt problems later in life.",
+ note:"The teaching of… — формальніший варіант герундія. Обидва прийнятні: <b>Teaching X / The teaching of X</b>."},
+{s:"Cities become overcrowded, and this harms residents' quality of life.",
+ hint:"overcrowded → overcrowding, harms → a decline / impact",
+ model:"<b>Overcrowding</b> in cities leads to <b>a decline</b> in residents' quality of life.",
+ alt:"The overcrowding of cities has a negative impact on residents' quality of life.",
+ note:"Прикметник overcrowded → іменник <b>overcrowding</b>. Harms → <b>leads to a decline in / has a negative impact on</b>."}
+]
 };
 
-/* ============================================================
-   INIT
-   ============================================================ */
-buildNav();
-route();
+const KEY = 'nom-practice-v1';
+let state = JSON.parse(localStorage.getItem(KEY) || '{"done":{},"tab":"t1"}');
+let tab = state.tab || 't1';
+
+const board = document.getElementById('board');
+
+function save(){ localStorage.setItem(KEY, JSON.stringify(state)); }
+
+function render(){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active', t.dataset.tab===tab));
+  board.innerHTML = '';
+  DATA[tab].forEach((ex,i)=>{
+    const id = tab+'-'+i;
+    const done = !!state.done[id];
+    const card = document.createElement('div');
+    card.className = 'card'+(done?' done':'');
+    card.innerHTML = `
+      <div class="card-head">
+        <div class="num">${i+1}</div>
+        <div>
+          <div class="src-label">Просте речення · Band 5–6</div>
+          <div class="src">${ex.s}</div>
+          <div class="hint">💡 Підказка: ${ex.hint}</div>
+        </div>
+      </div>
+      <textarea placeholder="Напиши тут свій варіант з номіналізацією…" id="ta-${id}">${state['text-'+id]||''}</textarea>
+      <div class="btn-row">
+        <button class="btn btn-model" onclick="toggleModel('${id}')">Показати зразок Band 7.5</button>
+        <button class="btn btn-done ${done?'on':''}" onclick="toggleDone('${id}',this)">${done?'✓ Виконано':'Позначити виконаним'}</button>
+      </div>
+      <div class="model" id="m-${id}">
+        <div class="model-label">Зразкова відповідь · Band 7.5</div>
+        <div class="model-text">${ex.model}</div>
+        <div class="model-text" style="margin-top:8px;font-weight:500;color:#D8E6DE">Або: ${ex.alt}</div>
+        <div class="model-note">${ex.note}</div>
+      </div>
+      <div class="selfcheck" id="sc-${id}">
+        <div class="selfcheck-title">Самоперевірка</div>
+        <label><input type="checkbox"> Я замінив(-ла) дієслово/прикметник на іменник (rise → a rise)</label>
+        <label><input type="checkbox"> Перед іменником є артикль і прикметник: <i>a rapid growth</i>, не <i>rapid growth</i> без a</label>
+        <label><input type="checkbox"> Прийменник правильний: <i>rise IN</i>, <i>reduction IN</i>, <i>development OF</i></label>
+        <label><input type="checkbox"> У реченні максимум 1–2 номіналізації — воно читається природно</label>
+      </div>`;
+    board.appendChild(card);
+  });
+  updateProgress();
+}
+
+window.toggleModel = id => {
+  const m = document.getElementById('m-'+id), sc = document.getElementById('sc-'+id);
+  const show = !m.classList.contains('show');
+  m.classList.toggle('show', show); sc.classList.toggle('show', show);
+  event.target.textContent = show ? 'Сховати зразок' : 'Показати зразок Band 7.5';
+};
+
+window.toggleDone = (id, btn) => {
+  state.done[id] = !state.done[id];
+  btn.classList.toggle('on', state.done[id]);
+  btn.textContent = state.done[id] ? '✓ Виконано' : 'Позначити виконаним';
+  btn.closest('.card').classList.toggle('done', state.done[id]);
+  save(); updateProgress();
+};
+
+function updateProgress(){
+  const total = DATA.t1.length + DATA.t2.length;
+  const n = Object.values(state.done).filter(Boolean).length;
+  document.getElementById('pfill').style.width = (n/total*100)+'%';
+  document.getElementById('plabel').textContent = n+' / '+total;
+}
+
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+  tab = t.dataset.tab; state.tab = tab; save(); render();
+}));
+
+board.addEventListener('input', e=>{
+  if(e.target.tagName==='TEXTAREA'){ state['text-'+e.target.id.slice(3)] = e.target.value; save(); }
+});
+
+document.getElementById('reset').addEventListener('click',()=>{
+  if(confirm('Скинути весь прогрес і всі тексти?')){ state={done:{},tab:tab}; save(); render(); }
+});
+
+render();
 </script>
 </body>
 </html>
